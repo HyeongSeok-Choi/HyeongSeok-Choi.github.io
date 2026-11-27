@@ -20,8 +20,6 @@
     <nav class="nav">
       <a href="#about">소개</a>
       <a href="#projects">프로젝트</a>
-      <a href="#network">현장 네트워크</a>
-      <a href="#pm">과제 PM</a>
       <a href="#experience">경력</a>
       <a href="#skills">기술</a>
       <a class="btn-sm" href="#contact">연락하기</a>
@@ -128,8 +126,8 @@
           </div>
         </div>
         <div class="body">
-          <div class="proj-no">PROJECT 01</div>
-          <div class="tagline"><span>2026.01 – 진행 중</span><span>팀 3명 · 파이프라인 담당</span></div>
+          <div class="proj-no">PROJECT 01 <span class="badge">개발 + 과제 PM</span></div>
+          <div class="tagline"><span>2026.01 – 진행 중</span><span>팀 3명 · 파이프라인 개발 + 과제 PM</span></div>
           <h3>제조 공정 실시간 품질 모니터링 · AI 품질 예측 시스템</h3>
           <p class="sum">유압실린더 가공 설비의 센서 데이터를 엣지에서 0.3초 주기로 수집해 MQTT로 보내고, FastAPI 백엔드에서 실시간 스트리밍 · AI 추론 · 이력 조회 · 보고서까지 잇는 파이프라인을 만들었습니다.</p>
           <div class="kpis">
@@ -171,65 +169,43 @@
         </div>
       </article>
 
-      <div class="sub-head"><h3>그 밖의 프로젝트</h3><span>AR/MR · 웹 · 교육 과정 프로젝트 6건</span></div>
-      <div class="cards">
-        <div class="card">
-          <div class="period">2025.06 – 2025.10 · ㈜빅아이</div>
-          <h4>시계열 기반 수요전력 예측 시스템</h4>
-          <p>전처리·파생 변수, XGBoost 모델 학습·평가, FastAPI 추론 서버, SvelteKit 시각화까지 단독 수행.</p>
-          <div class="chips"><span class="chip">XGBoost</span><span class="chip">pandas</span><span class="chip">FastAPI</span><span class="chip">SvelteKit</span></div>
-          <span class="lnk none">사내 프로젝트</span>
+      <div class="sub-block" id="pm">
+        <div class="sub-block-h">
+          <span class="sb-tag">PROJECT 01 · 과제 PM</span>
+          <h3>이 과제에서는 개발과 함께 실무 총괄(PM)을 맡았습니다.</h3>
+          <p>국가 R&amp;D 과제(2026.01 – 11)로, 기관 5곳이 참여한 컨소시엄입니다. 일정 · KPI · 데이터 · 조달 · 대외 협의를 챙기고, 막힌 지점은 근거를 만들어 직접 풀었습니다.</p>
         </div>
-        <div class="card">
-          <div class="period">2025.03 – 2026.01 · 사이드 프로젝트</div>
-          <h4>독서 모임 커뮤니티 BookTalk</h4>
-          <p>로그인 · 회원가입 · 마이페이지 · 관리자 화면 프론트와 일반·소셜 로그인 인증/인가 백엔드 담당.</p>
-          <div class="chips"><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Spring Boot</span><span class="chip">MySQL</span></div>
-          <a class="lnk" href="https://github.com/BookTalk-PROJECT/BookTalk_FE" target="_blank" rel="noopener">GitHub <span class="arrow">→</span></a>
-        </div>
-        <div class="card">
-          <div class="period">2024.11 – 2025.03 · ㈜메타뷰</div>
-          <h4>MR 원격 협업 · 자산관리 서비스 플랫폼 이전</h4>
-          <p>HoloLens2 원격 협업 프로그램과 안드로이드 AR 자산관리 시스템을 Metalens2로 컨버팅. SDK 교체로 깨진 기능 복원.</p>
-          <div class="chips"><span class="chip">C#</span><span class="chip">Unity</span><span class="chip">MySQL</span><span class="chip">MongoDB</span></div>
-          <span class="lnk none">사내 프로젝트</span>
-        </div>
-        <div class="card">
-          <div class="period">2024.07 – 2024.10 · 기업 연계</div>
-          <h4>AR 저작도구 Metavu Maker 템플릿 기능</h4>
-          <p>템플릿 데이터 정의, Scene UI, 추가·수정 클라이언트 로직과 서버 API를 구현하고 현업 피드백으로 최적화.</p>
-          <div class="chips"><span class="chip">C#</span><span class="chip">Unity</span><span class="chip">MongoDB</span><span class="chip">GitLab</span></div>
-          <span class="lnk none">기업 연계 프로젝트</span>
-        </div>
-        <div class="card">
-          <div class="period">2024.06 – 2024.07 · 팀장</div>
-          <h4>미니 MES 양약고구 <span class="badge">과정 내 2위</span></h4>
-          <p>수주 확정 시 생산 계획 자동 생성, 작업지시서 연동, 최대 생산량 기준 계획 분할, Chart.js 생산 현황.</p>
-          <div class="chips"><span class="chip">Spring Boot</span><span class="chip">JPA</span><span class="chip">jQuery</span><span class="chip">MySQL</span></div>
-          <a class="lnk" href="https://github.com/HyeongSeok-Choi/yangyaggogu/tree/hyeongseok" target="_blank" rel="noopener">GitHub <span class="arrow">→</span></a>
-        </div>
-        <div class="card">
-          <div class="period">2024.05 · 팀장</div>
-          <h4>포켓몬스터 팬카페 게시판</h4>
-          <p>Entity·Repository 설계, 카카오 OAuth2 로그인, 댓글 CRUD, 검색·정렬·페이징 구현.</p>
-          <div class="chips"><span class="chip">Spring Boot</span><span class="chip">JPA</span><span class="chip">Thymeleaf</span><span class="chip">OAuth2</span></div>
-          <a class="lnk" href="https://github.com/HyeongSeok-Choi/Poketmon-Board" target="_blank" rel="noopener">GitHub <span class="arrow">→</span></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- NETWORK -->
-  <section id="network" class="alt">
-    <div class="wrap">
-      <div class="sec-head">
-        <div class="label"><span class="ln">03</span>Field Network</div>
-        <div>
-          <h2>설비가 서버에 닿기까지,<br>현장 네트워크도 직접 풉니다.</h2>
-          <p>공장 현장은 망이 나뉘어 있고 원격 접근도 막혀 있는 경우가 많습니다. 수집기와 엣지 서비스가 실제로 동작하도록 망 구성, 보안 협의, 장애 진단까지 맡았습니다.</p>
-        </div>
+      <div class="consortium" aria-label="컨소시엄 구성">
+        <div class="cs-org me"><span>주관기관</span><b>㈜빅아이</b><em>실무 총괄 · 개발</em></div>
+        <div class="cs-org"><span>참여기관</span><b>대학 연구실</b><em>AI 모델</em></div>
+        <div class="cs-org"><span>수요기업</span><b>유압실린더 제조사</b><em>현장 · 데이터</em></div>
+        <div class="cs-org"><span>관리기관</span><b>지역 테크노파크</b><em>평가 · 관리</em></div>
+        <div class="cs-org"><span>검증기관</span><b>대학 검증센터</b><em>성능 시험</em></div>
       </div>
 
+      <div class="pm-kpis">
+        <div><b>94.2<small>%</small></b><span>AI 정확도</span><em>목표 90%</em></div>
+        <div><b>20<small>만 건</small></b><span>데이터 구축</span><em>목표 7만 건</em></div>
+        <div><b>3 → 15<small>건</small></b><span>불량 데이터 확보</span><em>결함 유형 분류 포함</em></div>
+        <div><b>98.7<small>%</small></b><span>주관기관 사업비 집행률</span><em>집행 내역 검증</em></div>
+      </div>
+
+      <div class="pm-list">
+        <article class="pm-item"><div class="pm-no">01</div><h3>일정 · 과업 관리</h3><p>사업계획서 과업 16개를 주 단위 WBS로 관리하고, 수요기업 월간 혁신회의 보고자료와 관계기관 회의록(후속 조치 담당자 · 기한 명시)을 작성했습니다.</p></article>
+        <article class="pm-item"><div class="pm-no">02</div><h3>KPI 재설계</h3><p>불량이 없어 측정할 수 없던 지표를 대체 지표(TNR)와 '검사시간 감소율'로 바꿨습니다. 자주검사성적서 513건을 분석하고 검증기관과 협의해 시험항목 정의서를 냈습니다.</p></article>
+        <article class="pm-item"><div class="pm-no">03</div><h3>데이터 확보</h3><p>핵심 이슈 5건을 정리해 관계자 회의를 주도하고, 수요기업에 전수검사 한시 운영과 불량품 별도 제작을 요청해 불량 데이터를 3건에서 15건으로 늘렸습니다.</p></article>
+        <article class="pm-item"><div class="pm-no">04</div><h3>조달 · 예산</h3><p>나라장터 구매를 사전규격 공개부터 입찰 완료까지 진행했고, 합산 시 장비 심의 대상(1억 원)이 되는 점을 확인해 품목을 나눴습니다. 주관기관 집행률 98.7%.</p></article>
+        <article class="pm-item"><div class="pm-no">05</div><h3>대외 협의</h3><p>수요기업 IT 계열사와 DB 직접 적재 방식 · 담당 · 일정을 확정하고, 엣지 서버 설치 전 IP · 망 분리 · 원격접속 경로를 고객사 IT팀과 미리 협의했습니다.</p></article>
+      </div>
+        <a class="more" style="margin-top:24px" href="projects/quality-monitoring.html#pm">PM 업무 자세히 보기 <span class="arrow">→</span></a>
+      </div>
+
+      <div class="sub-block" id="network">
+        <div class="sub-block-h">
+          <span class="sb-tag">PROJECT 01 · 02 · 현장 적용</span>
+          <h3>설비가 서버에 닿기까지, 현장 네트워크도 직접 풀었습니다.</h3>
+          <p>공장은 망이 나뉘어 있고 원격 접근도 막혀 있는 경우가 많습니다. 두 프로젝트가 현장에서 실제로 동작하도록 망 구성, 보안 협의, 장애 진단까지 맡았습니다.</p>
+        </div>
       <div class="net-intro">
         <div class="net-diagram" aria-label="유압실린더 가공 공장 엣지 서버 망 구성">
           <div class="nd-title">유압실린더 가공 공장 · 엣지 서버 구성</div>
@@ -291,81 +267,52 @@
           <div class="ts-result"><b>12초 → 30ms</b><span>응답 지연</span></div>
         </article>
       </div>
-    </div>
-  </section>
+      </div>
 
-  <!-- PM -->
-  <section id="pm">
-    <div class="wrap">
-      <div class="sec-head">
-        <div class="label"><span class="ln">04</span>Project Lead</div>
-        <div>
-          <h2>국가 R&amp;D 과제의 실무 총괄(PM)을<br>개발과 함께 맡았습니다.</h2>
-          <p>SRB 공정 AI 품질 모니터링 과제(2026.01 – 11). 기관 5곳이 참여한 컨소시엄에서 일정 · KPI · 데이터 · 조달 · 대외 협의를 챙기고, 막힌 지점은 근거를 만들어 직접 풀었습니다.</p>
+      <div class="sub-head"><h3>그 밖의 프로젝트</h3><span>AR/MR · 웹 · 교육 과정 프로젝트 6건</span></div>
+      <div class="cards">
+        <div class="card">
+          <div class="period">2025.06 – 2025.10 · ㈜빅아이</div>
+          <h4>시계열 기반 수요전력 예측 시스템</h4>
+          <p>전처리·파생 변수, XGBoost 모델 학습·평가, FastAPI 추론 서버, SvelteKit 시각화까지 단독 수행.</p>
+          <div class="chips"><span class="chip">XGBoost</span><span class="chip">pandas</span><span class="chip">FastAPI</span><span class="chip">SvelteKit</span></div>
+          <span class="lnk none">사내 프로젝트</span>
         </div>
-      </div>
-
-      <div class="consortium" aria-label="컨소시엄 구성">
-        <div class="cs-org me"><span>주관기관</span><b>㈜빅아이</b><em>실무 총괄 · 개발</em></div>
-        <div class="cs-org"><span>참여기관</span><b>대학 연구실</b><em>AI 모델</em></div>
-        <div class="cs-org"><span>수요기업</span><b>유압실린더 제조사</b><em>현장 · 데이터</em></div>
-        <div class="cs-org"><span>관리기관</span><b>지역 테크노파크</b><em>평가 · 관리</em></div>
-        <div class="cs-org"><span>검증기관</span><b>대학 검증센터</b><em>성능 시험</em></div>
-      </div>
-
-      <div class="pm-kpis">
-        <div><b>94.2<small>%</small></b><span>AI 정확도</span><em>목표 90%</em></div>
-        <div><b>20<small>만 건</small></b><span>데이터 구축</span><em>목표 7만 건</em></div>
-        <div><b>3 → 15<small>건</small></b><span>불량 데이터 확보</span><em>결함 유형 분류 포함</em></div>
-        <div><b>98.7<small>%</small></b><span>주관기관 사업비 집행률</span><em>집행 내역 검증</em></div>
-      </div>
-
-      <div class="pm-list">
-        <article class="pm-item">
-          <div class="pm-no">01</div>
-          <h3>일정 · 과업 관리</h3>
-          <ul>
-            <li>사업계획서의 과업 16개(공통 · 개발 · 실증)를 주 단위 WBS로 나눠 일정 관리</li>
-            <li>수요기업 월간 혁신회의 보고자료를 매월 작성 — 금월 실적, 향후 계획, 애로사항</li>
-            <li>관계기관 회의 안건 정리와 회의록 작성, 후속 조치마다 담당자와 기한 명시</li>
-          </ul>
-        </article>
-        <article class="pm-item">
-          <div class="pm-no">02</div>
-          <h3>KPI · 성과 관리</h3>
-          <div class="pm-story">
-            <div><dt>상황</dt><dd>1차년도에 불량 데이터가 없어 정확도(ACC)를 잴 수 없었고, 생산성 지표(불량 폐기 금액 감소)도 현장 불량이 거의 없어 측정이 불가능했습니다.</dd></div>
-            <div><dt>한 일</dt><dd>정확도 대신 쓸 지표(TNR)와 근거를 문서로 남겨 중간보고에 대응했습니다. 자주검사성적서 513건을 분석해 검사 공정 실태를 파악하고, 검증기관과 협의해 지표를 '검사시간 감소율'로 바꾼 뒤 시험항목 정의서를 제출했습니다.</dd></div>
-            <div><dt>결과</dt><dd>성과보고회 발표자료 작성 — AI 정확도 94.2%(목표 90%), 데이터 구축 20만 건(목표 7만 건).</dd></div>
-          </div>
-        </article>
-        <article class="pm-item">
-          <div class="pm-no">03</div>
-          <h3>데이터 확보 문제 해결</h3>
-          <div class="pm-story">
-            <div><dt>상황</dt><dd>불량 데이터가 3건뿐이고 결함 유형도 분류돼 있지 않았습니다.</dd></div>
-            <div><dt>한 일</dt><dd>핵심 이슈 5건을 정리해 관계자 회의를 주도했고, 수요기업에 내경 전수검사 한시 운영과 불량품 별도 제작을 요청했습니다.</dd></div>
-            <div><dt>결과</dt><dd>결함 유형이 분류된 불량 데이터 15건 확보. 작업지시 등 민감 정보를 비식별화한 데이터셋 문서도 작성해 제출했습니다.</dd></div>
-          </div>
-        </article>
-        <article class="pm-item">
-          <div class="pm-no">04</div>
-          <h3>조달 · 예산</h3>
-          <ul>
-            <li>나라장터로 2차 인프라(액츄에이터 · 조도측정기) 구매 — 사전규격 공개부터 입찰 완료까지 진행</li>
-            <li>합산 발주하면 국가연구시설장비 심의 대상(1억 원)이 되는 점을 확인하고, 품목을 나눠 등록하도록 조정</li>
-            <li>사업비 집행 내역 검증 — 주관기관 집행률 98.7%</li>
-          </ul>
-        </article>
-        <article class="pm-item">
-          <div class="pm-no">05</div>
-          <h3>대외 협의</h3>
-          <ul>
-            <li>수요기업 IT 계열사와 AI 데이터를 사내 DB에 적재하는 연계 방안 협의 → 연계 방식(DB 직접 적재), 기관별 담당과 일정 확정</li>
-            <li>엣지 서버 설치 전 IP 할당 · 망 분리 · 원격접속 경로를 고객사 IT팀과 사전 협의</li>
-            <li>관리기관 안내사항을 정리해 컨소시엄 참여기관에 공유</li>
-          </ul>
-        </article>
+        <div class="card">
+          <div class="period">2025.03 – 2026.01 · 사이드 프로젝트</div>
+          <h4>독서 모임 커뮤니티 BookTalk</h4>
+          <p>로그인 · 회원가입 · 마이페이지 · 관리자 화면 프론트와 일반·소셜 로그인 인증/인가 백엔드 담당.</p>
+          <div class="chips"><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Spring Boot</span><span class="chip">MySQL</span></div>
+          <a class="lnk" href="https://github.com/BookTalk-PROJECT/BookTalk_FE" target="_blank" rel="noopener">GitHub <span class="arrow">→</span></a>
+        </div>
+        <div class="card">
+          <div class="period">2024.11 – 2025.03 · ㈜메타뷰</div>
+          <h4>MR 원격 협업 · 자산관리 서비스 플랫폼 이전</h4>
+          <p>HoloLens2 원격 협업 프로그램과 안드로이드 AR 자산관리 시스템을 Metalens2로 컨버팅. SDK 교체로 깨진 기능 복원.</p>
+          <div class="chips"><span class="chip">C#</span><span class="chip">Unity</span><span class="chip">MySQL</span><span class="chip">MongoDB</span></div>
+          <span class="lnk none">사내 프로젝트</span>
+        </div>
+        <div class="card">
+          <div class="period">2024.07 – 2024.10 · 기업 연계</div>
+          <h4>AR 저작도구 Metavu Maker 템플릿 기능</h4>
+          <p>템플릿 데이터 정의, Scene UI, 추가·수정 클라이언트 로직과 서버 API를 구현하고 현업 피드백으로 최적화.</p>
+          <div class="chips"><span class="chip">C#</span><span class="chip">Unity</span><span class="chip">MongoDB</span><span class="chip">GitLab</span></div>
+          <span class="lnk none">기업 연계 프로젝트</span>
+        </div>
+        <div class="card">
+          <div class="period">2024.06 – 2024.07 · 팀장</div>
+          <h4>미니 MES 양약고구 <span class="badge">과정 내 2위</span></h4>
+          <p>수주 확정 시 생산 계획 자동 생성, 작업지시서 연동, 최대 생산량 기준 계획 분할, Chart.js 생산 현황.</p>
+          <div class="chips"><span class="chip">Spring Boot</span><span class="chip">JPA</span><span class="chip">jQuery</span><span class="chip">MySQL</span></div>
+          <a class="lnk" href="https://github.com/HyeongSeok-Choi/yangyaggogu/tree/hyeongseok" target="_blank" rel="noopener">GitHub <span class="arrow">→</span></a>
+        </div>
+        <div class="card">
+          <div class="period">2024.05 · 팀장</div>
+          <h4>포켓몬스터 팬카페 게시판</h4>
+          <p>Entity·Repository 설계, 카카오 OAuth2 로그인, 댓글 CRUD, 검색·정렬·페이징 구현.</p>
+          <div class="chips"><span class="chip">Spring Boot</span><span class="chip">JPA</span><span class="chip">Thymeleaf</span><span class="chip">OAuth2</span></div>
+          <a class="lnk" href="https://github.com/HyeongSeok-Choi/Poketmon-Board" target="_blank" rel="noopener">GitHub <span class="arrow">→</span></a>
+        </div>
       </div>
     </div>
   </section>
@@ -374,7 +321,7 @@
   <section id="experience" class="alt">
     <div class="wrap">
       <div class="sec-head">
-        <div class="label"><span class="ln">05</span>Experience</div>
+        <div class="label"><span class="ln">03</span>Experience</div>
         <div><h2>경력</h2></div>
       </div>
       <div class="sec-body">
@@ -431,7 +378,7 @@
   <section id="skills">
     <div class="wrap">
       <div class="sec-head">
-        <div class="label"><span class="ln">06</span>Skills</div>
+        <div class="label"><span class="ln">04</span>Skills</div>
         <div><h2>기술</h2><p>실무에서 쓰는 순서대로 적었습니다.</p></div>
       </div>
       <div class="sec-body">
@@ -451,7 +398,7 @@
   <section id="education" class="alt" style="padding:96px 0">
     <div class="wrap">
       <div class="sec-head">
-        <div class="label"><span class="ln">07</span>Education</div>
+        <div class="label"><span class="ln">05</span>Education</div>
         <div><h2>학력 · 자격</h2></div>
       </div>
       <div class="sec-body two-col">
@@ -479,7 +426,7 @@
   <section id="contact" class="contact">
     <div class="wrap">
       <div class="sec-head">
-        <div class="label"><span class="ln">08</span>Contact</div>
+        <div class="label"><span class="ln">06</span>Contact</div>
         <div>
           <h2>함께 일할 기회를 찾고 있습니다.</h2>
           <p>프로젝트의 설계 이유나 현장 이야기를 더 자세히 듣고 싶으시면 편하게 연락 주세요.</p>

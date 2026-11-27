@@ -30,7 +30,7 @@
       <p class="lead">설비(PLC)의 센서 데이터를 엣지에서 0.3초 주기로 수집해 MQTT로 서버에 보내고, FastAPI 백엔드에서 실시간 스트리밍 · AI 추론 · 이력 조회 · 보고서까지 이어지는 파이프라인을 설계·구축해 현장에 납품하고 운영했습니다. 작업자가 설비 앞 화면으로 보는 시스템입니다.</p>
       <dl class="facts">
         <div><dt>기간</dt><dd>2026.01 – 진행 중</dd></div>
-        <div><dt>역할</dt><dd>수집·추론 파이프라인, DB, 배포</dd></div>
+        <div><dt>역할</dt><dd>파이프라인 개발 · 과제 PM</dd></div>
         <div><dt>기여</dt><dd>비머지 커밋 210건 중 148건</dd></div>
         <div><dt>형태</dt><dd>현장 납품 · 온프레미스</dd></div>
       </dl>
@@ -52,6 +52,7 @@
         <a href="#quality">테스트 · CI/CD</a>
         <a href="#issues">문제 해결 사례</a>
         <a href="#network">현장 네트워크</a>
+        <a href="#pm">과제 PM</a>
         <a href="#stack">기술 스택</a>
       </nav>
 
@@ -201,8 +202,75 @@
           </div>
         </section>
 
+        <section id="pm">
+          <h2><span class="no">08</span>과제 PM — 국가 R&amp;D 실무 총괄</h2>
+          <p class="intro">이 시스템은 국가 R&amp;D 과제(2026.01 – 11)로 진행됐고, 개발과 함께 컨소시엄의 실무 총괄을 맡았습니다. 기관명은 공개하지 않습니다.</p>
+    <div class="consortium" aria-label="컨소시엄 구성">
+      <div class="cs-org me"><span>주관기관</span><b>㈜빅아이</b><em>실무 총괄 · 개발</em></div>
+      <div class="cs-org"><span>참여기관</span><b>대학 연구실</b><em>AI 모델</em></div>
+      <div class="cs-org"><span>수요기업</span><b>유압실린더 제조사</b><em>현장 · 데이터</em></div>
+      <div class="cs-org"><span>관리기관</span><b>지역 테크노파크</b><em>평가 · 관리</em></div>
+      <div class="cs-org"><span>검증기관</span><b>대학 검증센터</b><em>성능 시험</em></div>
+    </div>
+
+    <div class="pm-kpis">
+      <div><b>94.2<small>%</small></b><span>AI 정확도</span><em>목표 90%</em></div>
+      <div><b>20<small>만 건</small></b><span>데이터 구축</span><em>목표 7만 건</em></div>
+      <div><b>3 → 15<small>건</small></b><span>불량 데이터 확보</span><em>결함 유형 분류 포함</em></div>
+      <div><b>98.7<small>%</small></b><span>주관기관 사업비 집행률</span><em>집행 내역 검증</em></div>
+    </div>
+
+    <div class="pm-list">
+      <article class="pm-item">
+        <div class="pm-no">01</div>
+        <h3>일정 · 과업 관리</h3>
+        <ul>
+          <li>사업계획서의 과업 16개(공통 · 개발 · 실증)를 주 단위 WBS로 나눠 일정 관리</li>
+          <li>수요기업 월간 혁신회의 보고자료를 매월 작성 — 금월 실적, 향후 계획, 애로사항</li>
+          <li>관계기관 회의 안건 정리와 회의록 작성, 후속 조치마다 담당자와 기한 명시</li>
+        </ul>
+      </article>
+      <article class="pm-item">
+        <div class="pm-no">02</div>
+        <h3>KPI · 성과 관리</h3>
+        <div class="pm-story">
+          <div><dt>상황</dt><dd>1차년도에 불량 데이터가 없어 정확도(ACC)를 잴 수 없었고, 생산성 지표(불량 폐기 금액 감소)도 현장 불량이 거의 없어 측정이 불가능했습니다.</dd></div>
+          <div><dt>한 일</dt><dd>정확도 대신 쓸 지표(TNR)와 근거를 문서로 남겨 중간보고에 대응했습니다. 자주검사성적서 513건을 분석해 검사 공정 실태를 파악하고, 검증기관과 협의해 지표를 '검사시간 감소율'로 바꾼 뒤 시험항목 정의서를 제출했습니다.</dd></div>
+          <div><dt>결과</dt><dd>성과보고회 발표자료 작성 — AI 정확도 94.2%(목표 90%), 데이터 구축 20만 건(목표 7만 건).</dd></div>
+        </div>
+      </article>
+      <article class="pm-item">
+        <div class="pm-no">03</div>
+        <h3>데이터 확보 문제 해결</h3>
+        <div class="pm-story">
+          <div><dt>상황</dt><dd>불량 데이터가 3건뿐이고 결함 유형도 분류돼 있지 않았습니다.</dd></div>
+          <div><dt>한 일</dt><dd>핵심 이슈 5건을 정리해 관계자 회의를 주도했고, 수요기업에 내경 전수검사 한시 운영과 불량품 별도 제작을 요청했습니다.</dd></div>
+          <div><dt>결과</dt><dd>결함 유형이 분류된 불량 데이터 15건 확보. 작업지시 등 민감 정보를 비식별화한 데이터셋 문서도 작성해 제출했습니다.</dd></div>
+        </div>
+      </article>
+      <article class="pm-item">
+        <div class="pm-no">04</div>
+        <h3>조달 · 예산</h3>
+        <ul>
+          <li>나라장터로 2차 인프라(액츄에이터 · 조도측정기) 구매 — 사전규격 공개부터 입찰 완료까지 진행</li>
+          <li>합산 발주하면 국가연구시설장비 심의 대상(1억 원)이 되는 점을 확인하고, 품목을 나눠 등록하도록 조정</li>
+          <li>사업비 집행 내역 검증 — 주관기관 집행률 98.7%</li>
+        </ul>
+      </article>
+      <article class="pm-item">
+        <div class="pm-no">05</div>
+        <h3>대외 협의</h3>
+        <ul>
+          <li>수요기업 IT 계열사와 AI 데이터를 사내 DB에 적재하는 연계 방안 협의 → 연계 방식(DB 직접 적재), 기관별 담당과 일정 확정</li>
+          <li>엣지 서버 설치 전 IP 할당 · 망 분리 · 원격접속 경로를 고객사 IT팀과 사전 협의</li>
+          <li>관리기관 안내사항을 정리해 컨소시엄 참여기관에 공유</li>
+        </ul>
+      </article>
+    </div>
+        </section>
+
         <section id="stack" style="padding-bottom:0">
-          <h2><span class="no">08</span>기술 스택</h2>
+          <h2><span class="no">09</span>기술 스택</h2>
           <div class="chips" style="margin-top:20px">
             <span class="chip">Python</span><span class="chip">FastAPI (asyncio)</span><span class="chip">pymodbus</span><span class="chip">MQTT · mosquitto · paho-mqtt</span><span class="chip">SSE</span><span class="chip">MariaDB / MySQL (pymysql)</span><span class="chip">SvelteKit (정적 빌드)</span><span class="chip">nginx</span><span class="chip">Windows 서비스 (NSSM)</span><span class="chip">GitHub Actions · 자체 호스팅 러너</span><span class="chip">pytest</span>
           </div>

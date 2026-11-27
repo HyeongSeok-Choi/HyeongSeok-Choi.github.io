@@ -524,3 +524,26 @@ figure:hover img { box-shadow: 0 16px 36px -24px rgba(13, 27, 46, .45); }
   .pm-item > ul, .pm-item > .pm-story { grid-column: 1; }
   .pm-item:hover { padding-left: 0; background: transparent; }
 }
+
+/* ---------- sub blocks inside projects ---------- */
+.sub-block { margin-top: 96px; }
+.sub-block-h { border-top: 2px solid var(--ink); padding-top: 22px; margin-bottom: 28px; display: grid; grid-template-columns: 280px 1fr; column-gap: 48px; }
+.sb-tag { font-family: var(--mono); font-size: 12.5px; color: var(--accent); letter-spacing: .04em; padding-top: 6px; grid-row: span 2; }
+.sub-block-h h3 { font-size: 24px; letter-spacing: -.025em; line-height: 1.4; margin: 0 0 8px; }
+.sub-block-h p { margin: 0; color: var(--muted); max-width: 720px; }
+.pm-item p { margin: 0; font-size: 15px; color: var(--ink-2); }
+.proj-no .badge { font-family: "Pretendard Variable", Pretendard, sans-serif; letter-spacing: 0; }
+.cs-content .pm-item { grid-template-columns: 36px 150px 1fr; gap: 18px; }
+.cs-content .consortium { grid-template-columns: repeat(5, 1fr); }
+.cs-content .cs-org { padding: 14px; }
+.cs-content .pm-kpis b { font-size: 28px; }
+@media (max-width: 1000px) {
+  .sub-block-h { grid-template-columns: 1fr; }
+  .sb-tag { grid-row: auto; margin-bottom: 6px; }
+  .cs-content .consortium { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 720px) {
+  .sub-block { margin-top: 72px; }
+  .sub-block-h h3 { font-size: 20px; }
+  .cs-content .pm-item, .cs-content .consortium { grid-template-columns: 1fr; }
+}
