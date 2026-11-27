@@ -9,6 +9,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230d1b2e'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='16' fill='white' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
 </head>
 <body>
+<div class="progress" aria-hidden="true"></div>
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="../index.html"><span class="brand-mark">H</span>최형석</a>
@@ -33,6 +34,11 @@
         <div><dt>현장</dt><dd>ADAM 2대 · 경광등 10채널</dd></div>
         <div><dt>환경</dt><dd>오프라인 Windows 엣지 PC</dd></div>
       </dl>
+      <div class="tldr">
+        <div><h4>문제</h4><p>AI가 위험을 감지하면 현장 경광등을 켜야 하는데, 엣지 PC는 오프라인이고 추론 서버나 네트워크가 죽어도 경광등이 켜진 채 남으면 안 됐습니다.</p></div>
+        <div><h4>내가 한 일</h4><p>Modbus 릴레이 제어, 제어 REST API, watchdog·read-back·재연결 같은 안전 설계, 송신 라이브러리, 오프라인 배포 패키지를 혼자 만들었습니다.</p></div>
+        <div><h4>결과</h4><p>ADAM 2대 · 경광등 10채널 현장 적용. 요청부터 릴레이 반영 확인까지 약 2ms, 통합 테스트 96개.</p></div>
+      </div>
     </div>
   </div>
 
@@ -166,5 +172,6 @@
   </div>
 </main>
 <footer><div class="wrap"><span>© 2026 Choi HyeongSeok</span><span>Last updated 2026.11</span></div></footer>
+<script src="../assets/site.js" defer></script>
 </body>
 </html>

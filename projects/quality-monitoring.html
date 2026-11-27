@@ -9,6 +9,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230d1b2e'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='16' fill='white' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
 </head>
 <body>
+<div class="progress" aria-hidden="true"></div>
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="../index.html"><span class="brand-mark">H</span>최형석</a>
@@ -33,6 +34,11 @@
         <div><dt>기여</dt><dd>비머지 커밋 210건 중 148건</dd></div>
         <div><dt>형태</dt><dd>현장 납품 · 온프레미스</dd></div>
       </dl>
+      <div class="tldr">
+        <div><h4>문제</h4><p>서버가 PLC를 직접 읽는 구조가 현장에서 불안정했고, 0.3초 수집 중 DB·추론·화면 전송이 서로를 막았습니다.</p></div>
+        <div><h4>내가 한 일</h4><p>Async 수집 + 스레드 분리, 엣지 MQTT 전환과 고장별 대응, 제품 단위 DB 구조, 모델 연동, 테스트·CI/CD를 만들었습니다.</p></div>
+        <div><h4>결과</h4><p>현장 납품 · 운영. 재생 검증에서 사이클 26/26 일치, 테스트 0 → 297개, 머지하면 가공을 피해 자동 배포·실패 시 롤백.</p></div>
+      </div>
     </div>
   </div>
 
@@ -194,5 +200,6 @@
   </div>
 </main>
 <footer><div class="wrap"><span>© 2026 Choi HyeongSeok</span><span>Last updated 2026.11</span></div></footer>
+<script src="../assets/site.js" defer></script>
 </body>
 </html>

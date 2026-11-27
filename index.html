@@ -13,6 +13,7 @@
 </head>
 <body>
 
+<div class="progress" aria-hidden="true"></div>
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="#top"><span class="brand-mark">H</span>최형석</a>
@@ -41,10 +42,16 @@
             <a class="btn btn-ghost" href="https://github.com/HyeongSeok-Choi" target="_blank" rel="noopener">GitHub</a>
           </div>
         </div>
-        <figure class="profile">
-          <img src="assets/img/profile.jpg" alt="최형석 프로필 사진" width="281" height="381">
-          <figcaption><b>최형석</b><span>㈜빅아이 · 플랫폼 개발</span></figcaption>
-        </figure>
+        <aside class="glance" aria-label="한눈에 보기">
+          <div class="glance-h">한눈에 보기</div>
+          <dl>
+            <div><dt>현재</dt><dd>㈜빅아이 플랫폼 개발<small>2025.06 – 재직 중</small></dd></div>
+            <div><dt>개발 경력</dt><dd>2년+<small>AR/MR 7개월 · 제조 AI 1년 6개월</small></dd></div>
+            <div><dt>주력</dt><dd>Python · FastAPI · SvelteKit</dd></div>
+            <div><dt>강점</dt><dd>설비 데이터 수집 · 실시간 파이프라인 · 현장 운영</dd></div>
+          </dl>
+          <a class="glance-link" href="#projects">대표 프로젝트 2건 <span class="arrow">→</span></a>
+        </aside>
       </div>
 
       <div class="flow" aria-label="담당 영역">
@@ -62,7 +69,7 @@
   <section id="about">
     <div class="wrap">
       <div class="sec-head">
-        <div class="label">About</div>
+        <div class="label"><span class="ln">01</span>About</div>
         <div>
           <h2>데이터가 어디서 어떻게 들어오는지 알고<br>그 위에 화면과 기능을 만듭니다.</h2>
           <p>교육 과정에서 Java·Spring Boot로 웹을 배웠고, 첫 회사에서는 C#·Unity로 AR 콘텐츠를, 지금은 Python·FastAPI로 제조 현장 AI 플랫폼을 만들고 있습니다. 언어는 문제를 푸는 도구라고 생각해 필요한 환경으로 옮겨 가는 데 부담이 없습니다.</p>
@@ -95,7 +102,7 @@
   <section id="projects">
     <div class="wrap">
       <div class="sec-head">
-        <div class="label">Projects</div>
+        <div class="label"><span class="ln">02</span>Projects</div>
         <div>
           <h2>현장에 납품해 운영 중인 시스템</h2>
           <p>㈜빅아이에서 설계부터 현장 적용까지 맡은 두 프로젝트입니다. 고객사명과 설비 정보는 공개하지 않습니다.</p>
@@ -118,9 +125,15 @@
           </div>
         </div>
         <div class="body">
-          <div class="tagline"><span>2026.01 – 진행 중</span><span>백엔드 · 파이프라인 · 운영</span></div>
+          <div class="proj-no">PROJECT 01</div>
+          <div class="tagline"><span>2026.01 – 진행 중</span><span>팀 3명 · 파이프라인 담당</span></div>
           <h3>제조 공정 실시간 품질 모니터링 · AI 품질 예측 시스템</h3>
           <p class="sum">유압실린더 가공 설비의 센서 데이터를 엣지에서 0.3초 주기로 수집해 MQTT로 보내고, FastAPI 백엔드에서 실시간 스트리밍 · AI 추론 · 이력 조회 · 보고서까지 잇는 파이프라인을 만들었습니다.</p>
+          <div class="kpis">
+            <div><b>0.3초</b><span>수집 주기</span></div>
+            <div><b>148/210</b><span>본인 커밋</span></div>
+            <div><b>0→297</b><span>테스트</span></div>
+          </div>
           <ul class="points">
             <li>블로킹 Modbus를 Async로 바꾸고 DB·추론을 스레드로 분리해 수집 주기 유지</li>
             <li>서버 직접 수집 → 엣지 MQTT 전환, 중복·재기동·누락을 각각 처리</li>
@@ -135,9 +148,15 @@
       <article class="feature">
         <div class="media"><img src="assets/img/00_architecture.png" alt="엣지 알람 서비스 시스템 구조도"></div>
         <div class="body">
-          <div class="tagline"><span>2026</span><span>설계 · 개발 · 현장 적용</span></div>
+          <div class="proj-no">PROJECT 02</div>
+          <div class="tagline"><span>2026</span><span>단독 · 설계부터 현장 적용까지</span></div>
           <h3>AI 안전관제 엣지 알람 서비스</h3>
           <p class="sum">AI 추론 서버가 불량·위험을 감지하면 현장 경광등(ADAM-6260 릴레이)을 켜는 엣지 서비스입니다. 보안상 오프라인인 Windows 엣지 PC에 파일 복사만으로 배포합니다.</p>
+          <div class="kpis">
+            <div><b>~2ms</b><span>요청→릴레이 반영</span></div>
+            <div><b>10채널</b><span>현장 경광등</span></div>
+            <div><b>96개</b><span>통합 테스트</span></div>
+          </div>
           <ul class="points">
             <li>장비별 전담 워커 · 쓰기 후 재확인(read-back) · 자동 재연결</li>
             <li>ON 갱신이 끊기면 30초 뒤 자동 OFF하는 watchdog</li>
@@ -149,7 +168,7 @@
         </div>
       </article>
 
-      <h3 style="font-size:20px;letter-spacing:-.02em;margin:88px 0 20px">그 밖의 프로젝트</h3>
+      <div class="sub-head"><h3>그 밖의 프로젝트</h3><span>AR/MR · 웹 · 교육 과정 프로젝트 6건</span></div>
       <div class="cards">
         <div class="card">
           <div class="period">2025.06 – 2025.10 · ㈜빅아이</div>
@@ -201,7 +220,7 @@
   <section id="experience" class="alt">
     <div class="wrap">
       <div class="sec-head">
-        <div class="label">Experience</div>
+        <div class="label"><span class="ln">03</span>Experience</div>
         <div><h2>경력</h2></div>
       </div>
       <div class="sec-body">
@@ -257,7 +276,7 @@
   <section id="skills">
     <div class="wrap">
       <div class="sec-head">
-        <div class="label">Skills</div>
+        <div class="label"><span class="ln">04</span>Skills</div>
         <div><h2>기술</h2><p>실무에서 쓰는 순서대로 적었습니다.</p></div>
       </div>
       <div class="sec-body">
@@ -274,10 +293,10 @@
   </section>
 
   <!-- EDUCATION -->
-  <section class="alt" style="padding:96px 0">
+  <section id="education" class="alt" style="padding:96px 0">
     <div class="wrap">
       <div class="sec-head">
-        <div class="label">Education</div>
+        <div class="label"><span class="ln">05</span>Education</div>
         <div><h2>학력 · 자격</h2></div>
       </div>
       <div class="sec-body two-col">
@@ -305,7 +324,7 @@
   <section id="contact" class="contact">
     <div class="wrap">
       <div class="sec-head">
-        <div class="label">Contact</div>
+        <div class="label"><span class="ln">06</span>Contact</div>
         <div>
           <h2>함께 일할 기회를 찾고 있습니다.</h2>
           <p>프로젝트의 설계 이유나 현장 이야기를 더 자세히 듣고 싶으시면 편하게 연락 주세요.</p>
@@ -323,5 +342,6 @@
 </main>
 
 <footer><div class="wrap"><span>© 2026 Choi HyeongSeok</span><span>Last updated 2026.11</span></div></footer>
+<script src="assets/site.js" defer></script>
 </body>
 </html>
