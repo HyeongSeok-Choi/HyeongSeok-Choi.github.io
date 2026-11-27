@@ -60,6 +60,10 @@
         <section id="arch">
           <h2><span class="no">01</span>구성과 역할</h2>
           <p class="intro">팀원 두 명이 초기 세팅, 로그인·JWT, 사용자 관리, 초기 대시보드를 맡았고, 저는 그 위에서 데이터가 들어오고 판정되어 화면에 나가는 경로 전체를 맡았습니다.</p>
+          <figure>
+            <img src="../assets/img/srb/dashboard.webp" alt="통합 모니터링 화면: 가공 상태, 실시간 센서 그래프, 사이클 판정, 제품 목록" loading="lazy">
+            <figcaption>통합 모니터링 화면 — 가공 상태 · 실시간 센서 그래프(사이클 구간 표시) · 최근 사이클 판정 · 제품 목록. 작업자가 설비 앞에서 보는 화면입니다.</figcaption>
+          </figure>
           <div class="mini-arch" style="margin:24px 0;background:var(--bg-alt);padding:24px;border:1px solid var(--line)">
             <div class="row">
               <div class="box"><b>설비 PLC</b><span>센서 22채널 · 레지스터 85개</span></div>
@@ -128,6 +132,16 @@
             <li><code>products</code> 테이블을 만들고 센서 · 추론 결과를 FK로 묶었습니다.</li>
             <li>제품 목록 · 상세 · 센서 시계열 · 추론 결과 · 보고서 API를 만들었습니다.</li>
           </ul>
+          <div class="gallery">
+            <figure>
+              <img src="../assets/img/srb/history-summary.webp" alt="과거 데이터 조회 요약 탭: 센서별 최소 평균 최대와 같은 작지 안에서의 위치" loading="lazy">
+              <figcaption>과거 데이터 조회 · 요약 — 사이클을 고르면 센서별 최소 · 평균 · 최대와 같은 작업지시 안에서의 위치를 보여 줍니다.</figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/img/srb/history-chart.webp" alt="과거 데이터 조회 차트 탭: 센서별 시계열 그래프" loading="lazy">
+              <figcaption>과거 데이터 조회 · 차트 — 같은 사이클의 센서별 시계열. 버튼 하나로 이 사이클의 추론 결과로 넘어갑니다.</figcaption>
+            </figure>
+          </div>
           <h3>사이클 경계 재설계</h3>
           <p>PLC 56번지를 사이클 경계로 쓰고 있었는데, 실제로는 투입자재 라벨이었습니다. 실측 로그와 대조해 보니 가공 26회에 라벨 변경은 15회였습니다. Z축 가공 상태로 경계를 바꾸고 가공이 끝나는 즉시 판정하게 했습니다.</p>
           <div class="stat-strip">
@@ -143,6 +157,20 @@
             <li>생산성 검증 제출용으로 흩어진 테이블을 조인해 기간별 추론 로그 CSV와 일별 요약을 한 번에 냅니다(시연용 모의 사이클은 기본 제외).</li>
             <li>불량 예측 알림이 화면 폴링에 의존해 다른 화면에 있으면 누락되던 것을, 판정 직후 서버가 <b>SSE 이벤트로 밀어 보내게</b> 바꿨습니다.</li>
           </ul>
+          <figure>
+            <img src="../assets/img/srb/inference.webp" alt="추론 결과 조회 화면: 사이클별 AI 추론 이력과 판정" loading="lazy">
+            <figcaption>추론 결과 조회 — 사이클별 AI 추론 이력. 이상 감지는 영향이 큰 센서를, 판정이 없을 때는 '판정 없음'을 그대로 보여 줍니다.</figcaption>
+          </figure>
+          <div class="gallery">
+            <figure>
+              <img src="../assets/img/srb/report-1.webp" alt="AI 품질 모니터링 보고서 앞부분: 추론 요약, 판정 요약, 판정 근거" loading="lazy">
+              <figcaption>AI 보고서 (1) — 추론 요약 · 모델별 판정 · 판정 근거(점수와 센서별 기여도)</figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/img/srb/report-2.webp" alt="AI 품질 모니터링 보고서 뒷부분: 모델 입력 출력 항목, 조도 내경, 주요 이슈, 알림 내역" loading="lazy">
+              <figcaption>AI 보고서 (2) — 모델별 입력 센서 · 예측 항목, 조도 · 내경 예측과 실측, 주요 이슈 · 알림 내역</figcaption>
+            </figure>
+          </div>
         </section>
 
         <section id="quality">

@@ -35,3 +35,23 @@
     if (el.getBoundingClientRect().top > window.innerHeight) { el.classList.add('reveal'); io.observe(el); }
   });
 })();
+
+// click a case-study screenshot to view it large
+(() => {
+  const imgs = document.querySelectorAll('.cs-content figure img');
+  if (!imgs.length) return;
+  const box = document.createElement('div');
+  box.className = 'lightbox';
+  box.innerHTML = '<img alt=""><p></p>';
+  document.body.appendChild(box);
+  const big = box.querySelector('img'), cap = box.querySelector('p');
+  const close = () => box.classList.remove('open');
+  imgs.forEach(img => img.addEventListener('click', () => {
+    big.src = img.currentSrc || img.src; big.alt = img.alt;
+    const fc = img.closest('figure')?.querySelector('figcaption');
+    cap.textContent = fc ? fc.textContent : '';
+    box.classList.add('open');
+  }));
+  box.addEventListener('click', close);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+})();
