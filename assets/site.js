@@ -25,7 +25,7 @@
 
   // fade-in on scroll
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const items = document.querySelectorAll('.sec-head, .feature, .card, .t-item, .metric, .about-item, .skill-row, .cs-content > section, .case');
+  const items = document.querySelectorAll('.sec-head, .feature, .card, .t-item, .metric, .about-item, .skill-row, .cs-content > section, .case, .ts, .pm-item, .net-intro, .consortium, .pm-kpis');
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }

@@ -29,7 +29,7 @@
       <h1>AI 안전관제 엣지 알람 서비스</h1>
       <p class="lead">AI 안전관제 플랫폼의 불량 · 위험 감지 결과를 현장 경광등(Advantech ADAM-6260 릴레이)에 연동하는 엣지 알람 서비스를 설계 · 개발하고 현장에 적용했습니다.</p>
       <dl class="facts">
-        <div><dt>기간</dt><dd>2026</dd></div>
+        <div><dt>기간</dt><dd>2026.08 – 진행 중</dd></div>
         <div><dt>역할</dt><dd>설계 · 개발 · 현장 적용 단독</dd></div>
         <div><dt>현장</dt><dd>ADAM 2대 · 경광등 10채널</dd></div>
         <div><dt>환경</dt><dd>오프라인 Windows 엣지 PC</dd></div>
@@ -143,6 +143,12 @@
         <section id="field">
           <h2><span class="no">08</span>현장 적용과 트러블슈팅</h2>
           <p class="intro">ADAM 2대(경광등 10채널)에 적용하고, 다른 서버에서 호출하는 연동까지 검증했습니다.</p>
+          <h3>장비 등록과 운영 준비</h3>
+          <ul>
+            <li>공장 기본 IP 상태의 ADAM-6260을 유틸리티로 찾고, 보조 IP로 임시 통신을 확인했습니다.</li>
+            <li>운영용 정식 IP 할당을 요청하고, 통신이 끊겼을 때 장비가 내보낼 안전 출력(Fail-Safe) 설정을 검토했습니다.</li>
+          </ul>
+          <h3>장애 진단</h3>
           <div class="case">
             <div class="case-h"><span class="tag">ISSUE 1</span>다른 서버에서 API에 접속되지 않음</div>
             <dl class="case-b"><dt>분리</dt><dd>netstat → 로컬 접속 → 방화벽 순서로 단계적으로 범위를 좁혔습니다.</dd><dt>원인</dt><dd>서비스 bind 주소가 loopback이었습니다. 바인드 설정을 바로잡아 해결했습니다.</dd></dl>
@@ -150,6 +156,14 @@
           <div class="case">
             <div class="case-h"><span class="tag">ISSUE 2</span>특정 장비만 하루 수십 회 통신 끊김</div>
             <dl class="case-b"><dt>분석</dt><dd>며칠치 로그를 장비별 · 시간대별로 비교하고 "응답 지연"과 "연결 단절"을 구분했습니다.</dd><dt>원인</dt><dd>장비 웹 페이지를 상시로 띄워 두어 생긴 부하였습니다.</dd></dl>
+          </div>
+          <div class="case">
+            <div class="case-h"><span class="tag">ISSUE 3</span>VPN으로 엣지 서버 · CCTV에 접속되지 않음</div>
+            <dl class="case-b"><dt>분석</dt><dd>서브넷 전체를 스캔하고 응답 유형(TimedOut / Unreachable)을 구분해 장애 구간을 좁혔습니다.</dd><dt>원인</dt><dd>엣지 서버 NIC 2개가 모두 PoE 허브에만 연결돼 공장 LAN과 물리적으로 분리돼 있었습니다.</dd><dt>제안</dt><dd>NIC 재배선 · 망 분리 / 아웃바운드 터널 / 점프 호스트, 세 가지 해결 방안을 정리해 제시했습니다.</dd></dl>
+          </div>
+          <div class="case">
+            <div class="case-h"><span class="tag">ISSUE 4</span>엣지 · SCADA · 미니PC 사이 통신이 한쪽 방향만 됨</div>
+            <dl class="case-b"><dt>분석</dt><dd>ARP로 물리 연결은 정상임을 먼저 확인했습니다.</dd><dt>원인</dt><dd>Windows 방화벽의 ICMP 차단으로 범위를 좁혀 특정했습니다.</dd></dl>
           </div>
         </section>
 

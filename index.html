@@ -20,6 +20,8 @@
     <nav class="nav">
       <a href="#about">소개</a>
       <a href="#projects">프로젝트</a>
+      <a href="#network">현장 네트워크</a>
+      <a href="#pm">과제 PM</a>
       <a href="#experience">경력</a>
       <a href="#skills">기술</a>
       <a class="btn-sm" href="#contact">연락하기</a>
@@ -48,7 +50,8 @@
             <div><dt>현재</dt><dd>㈜빅아이 플랫폼 개발<small>2025.06 – 재직 중</small></dd></div>
             <div><dt>개발 경력</dt><dd>2년+<small>AR/MR 7개월 · 제조 AI 1년 6개월</small></dd></div>
             <div><dt>주력</dt><dd>Python · FastAPI · SvelteKit</dd></div>
-            <div><dt>강점</dt><dd>설비 데이터 수집 · 실시간 파이프라인 · 현장 운영</dd></div>
+            <div><dt>강점</dt><dd>설비 데이터 수집 · 실시간 파이프라인</dd></div>
+            <div><dt>현장</dt><dd>공장 망 구성 · 장애 진단<small>국가 R&amp;D 과제 PM 겸임</small></dd></div>
           </dl>
           <a class="glance-link" href="#projects">대표 프로젝트 2건 <span class="arrow">→</span></a>
         </aside>
@@ -80,7 +83,7 @@
           <div class="about-item"><h3>원인을 끝까지 찾습니다</h3><p>서버 GPU 메모리가 계속 차오르던 문제를 재시작으로 넘기지 않고, 추론 코드에 빠진 <code>torch.no_grad()</code>를 찾아 해결했습니다.</p></div>
           <div class="about-item"><h3>현장에서 검증합니다</h3><p>PLC 번지의 의미, 릴레이 코일 주소, 통신 끊김의 원인을 실측 로그와 장비로 직접 확인한 뒤 코드에 반영합니다.</p></div>
           <div class="about-item"><h3>장애를 전제로 설계합니다</h3><p>재연결, 중복 제거, watchdog 자동 OFF, 배포 롤백처럼 "잘못됐을 때 어떻게 되는가"를 먼저 정합니다.</p></div>
-          <div class="about-item"><h3>개발 밖의 일도 함께 합니다</h3><p>국가 R&amp;D 과제의 일정 조율, 중간보고서, 예산 집행 검증, 나라장터 장비 도입 절차까지 병행하고 있습니다.</p></div>
+          <div class="about-item"><h3>과제 PM을 겸합니다</h3><p>기관 5곳이 참여한 국가 R&amp;D 과제의 실무 총괄로 일정 · KPI · 데이터 확보 · 조달 · 대외 협의를 맡았습니다.</p></div>
         </div>
       </div>
     </div>
@@ -149,7 +152,7 @@
         <div class="media"><img src="assets/img/00_architecture.png" alt="엣지 알람 서비스 시스템 구조도"></div>
         <div class="body">
           <div class="proj-no">PROJECT 02</div>
-          <div class="tagline"><span>2026</span><span>단독 · 설계부터 현장 적용까지</span></div>
+          <div class="tagline"><span>2026.08 – 진행 중</span><span>단독 · 설계부터 현장 적용까지</span></div>
           <h3>AI 안전관제 엣지 알람 서비스</h3>
           <p class="sum">AI 추론 서버가 불량·위험을 감지하면 현장 경광등(ADAM-6260 릴레이)을 켜는 엣지 서비스입니다. 보안상 오프라인인 Windows 엣지 PC에 파일 복사만으로 배포합니다.</p>
           <div class="kpis">
@@ -216,11 +219,162 @@
     </div>
   </section>
 
+  <!-- NETWORK -->
+  <section id="network" class="alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="label"><span class="ln">03</span>Field Network</div>
+        <div>
+          <h2>설비가 서버에 닿기까지,<br>현장 네트워크도 직접 풉니다.</h2>
+          <p>공장 현장은 망이 나뉘어 있고 원격 접근도 막혀 있는 경우가 많습니다. 수집기와 엣지 서비스가 실제로 동작하도록 망 구성, 보안 협의, 장애 진단까지 맡았습니다.</p>
+        </div>
+      </div>
+
+      <div class="net-intro">
+        <div class="net-diagram" aria-label="유압실린더 가공 공장 엣지 서버 망 구성">
+          <div class="nd-title">유압실린더 가공 공장 · 엣지 서버 구성</div>
+          <div class="nd-grid">
+            <div class="nd-net"><b>사내망</b><span>본사 · SSL VPN</span></div>
+            <div class="nd-line"><em>NIC 1 · 기본 GW</em></div>
+            <div class="nd-edge"><b>엣지 서버</b><span>듀얼 NIC</span></div>
+            <div class="nd-line"><em>NIC 2 · GW 없음</em></div>
+            <div class="nd-net"><b>설비망</b><span>SCADA · PLC</span></div>
+          </div>
+          <div class="nd-foot"><span class="nd-closed">폐쇄망</span> 별도 분리 · 접근하지 않음</div>
+        </div>
+        <ul class="net-build">
+          <li><b>3개 망 구조 파악 · 듀얼 NIC 구성</b><span>사내망 · 설비망 · 폐쇄망으로 나뉜 구조에서 엣지 서버에 NIC 2개를 두고, 기본 게이트웨이는 사내망 NIC에만 설정해 라우팅 충돌을 막았습니다.</span></li>
+          <li><b>SCADA Modbus 슬레이브 연결</b><span>설비망 작업지시 SCADA의 Modbus TCP 슬레이브(레지스터 152개)에 접속해 실시간 수집을 확인했습니다.</span></li>
+          <li><b>보안 정책 안에서 접속 경로 확보</b><span>본사 IT팀과 고정 IP 할당, NAC · CleanPC 보안 솔루션 적용, SSL VPN 신청을 협의했습니다. 원격 접근이 안 되던 때는 같은 망 PC의 ARP 조회로 엣지 서버 MAC을 확인했습니다.</span></li>
+          <li><b>릴레이 장비 탐색 · 등록</b><span>공장 기본 IP 상태의 ADAM-6260을 유틸리티로 찾고 보조 IP로 임시 통신을 확인한 뒤, 운영용 정식 IP 할당을 요청했습니다.</span></li>
+        </ul>
+      </div>
+
+      <div class="sub-head"><h3>장애 진단 사례</h3><span>증상 → 진단 → 원인 → 조치</span></div>
+      <div class="ts-list">
+        <article class="ts">
+          <div class="ts-h"><span class="ts-site">유압실린더 가공 공장</span><h4>VPN으로 엣지 서버 원격 데스크톱이 안 됨</h4></div>
+          <dl>
+            <div><dt>진단</dt><dd>VPN 터널 → 방화벽 정책 → 라우팅 → 호스트 상태 순으로 하나씩 소거</dd></div>
+            <div><dt>원인</dt><dd>엣지 서버 Windows 방화벽의 인바운드 차단</dd></div>
+            <div><dt>조치</dt><dd>네트워크 프로필 전체를 바꾸지 않고, VPN 대역에 한정한 포트 규칙만 추가(최소 권한)</dd></div>
+          </dl>
+        </article>
+        <article class="ts">
+          <div class="ts-h"><span class="ts-site">정밀 가공 공장</span><h4>VPN으로 엣지 서버 · CCTV에 접속되지 않음</h4></div>
+          <dl>
+            <div><dt>진단</dt><dd>서브넷 전체를 스캔하고 응답 유형(TimedOut / Unreachable)을 구분해 장애 구간을 좁힘</dd></div>
+            <div><dt>원인</dt><dd>엣지 서버 NIC 2개가 모두 PoE 허브에만 연결돼 공장 LAN과 물리적으로 분리된 구조</dd></div>
+            <div><dt>조치</dt><dd>해결 방안 3가지 제시: NIC 재배선 · 망 분리 / 아웃바운드 터널 / 점프 호스트</dd></div>
+          </dl>
+        </article>
+        <article class="ts">
+          <div class="ts-h"><span class="ts-site">유압실린더 가공 공장</span><h4>SCADA PC에서 CIMON 장비와 통신 불가</h4></div>
+          <dl>
+            <div><dt>원인</dt><dd>SCADA PC의 여러 LAN 포트가 같은 IP 대역으로 설정돼 충돌</dd></div>
+            <div><dt>조치</dt><dd>포트별로 IP 대역을 분리해 CIMON 장비 통신 정상화</dd></div>
+          </dl>
+        </article>
+        <article class="ts">
+          <div class="ts-h"><span class="ts-site">정밀 가공 공장</span><h4>엣지 · SCADA · 미니PC 사이 통신이 한쪽 방향만 됨</h4></div>
+          <dl>
+            <div><dt>진단</dt><dd>ARP 테이블로 물리 연결은 정상임을 먼저 확인</dd></div>
+            <div><dt>원인</dt><dd>Windows 방화벽의 ICMP 차단으로 범위를 좁혀 특정</dd></div>
+          </dl>
+        </article>
+        <article class="ts ts-wide">
+          <div class="ts-h"><span class="ts-site">사내 업무 환경</span><h4>VPN 접속 중 인터넷 응답이 약 12초씩 지연됨</h4></div>
+          <dl>
+            <div><dt>원인</dt><dd>사내 DNS가 외부 도메인 조회에서 타임아웃</dd></div>
+            <div><dt>조치</dt><dd>VPN 어댑터의 DNS를 변경하고, 작업 스케줄러로 VPN 접속 시 자동 적용</dd></div>
+          </dl>
+          <div class="ts-result"><b>12초 → 30ms</b><span>응답 지연</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PM -->
+  <section id="pm">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="label"><span class="ln">04</span>Project Lead</div>
+        <div>
+          <h2>국가 R&amp;D 과제의 실무 총괄(PM)을<br>개발과 함께 맡았습니다.</h2>
+          <p>SRB 공정 AI 품질 모니터링 과제(2026.01 – 11). 기관 5곳이 참여한 컨소시엄에서 일정 · KPI · 데이터 · 조달 · 대외 협의를 챙기고, 막힌 지점은 근거를 만들어 직접 풀었습니다.</p>
+        </div>
+      </div>
+
+      <div class="consortium" aria-label="컨소시엄 구성">
+        <div class="cs-org me"><span>주관기관</span><b>㈜빅아이</b><em>실무 총괄 · 개발</em></div>
+        <div class="cs-org"><span>참여기관</span><b>대학 연구실</b><em>AI 모델</em></div>
+        <div class="cs-org"><span>수요기업</span><b>유압실린더 제조사</b><em>현장 · 데이터</em></div>
+        <div class="cs-org"><span>관리기관</span><b>지역 테크노파크</b><em>평가 · 관리</em></div>
+        <div class="cs-org"><span>검증기관</span><b>대학 검증센터</b><em>성능 시험</em></div>
+      </div>
+
+      <div class="pm-kpis">
+        <div><b>94.2<small>%</small></b><span>AI 정확도</span><em>목표 90%</em></div>
+        <div><b>20<small>만 건</small></b><span>데이터 구축</span><em>목표 7만 건</em></div>
+        <div><b>3 → 15<small>건</small></b><span>불량 데이터 확보</span><em>결함 유형 분류 포함</em></div>
+        <div><b>98.7<small>%</small></b><span>주관기관 사업비 집행률</span><em>집행 내역 검증</em></div>
+      </div>
+
+      <div class="pm-list">
+        <article class="pm-item">
+          <div class="pm-no">01</div>
+          <h3>일정 · 과업 관리</h3>
+          <ul>
+            <li>사업계획서의 과업 16개(공통 · 개발 · 실증)를 주 단위 WBS로 나눠 일정 관리</li>
+            <li>수요기업 월간 혁신회의 보고자료를 매월 작성 — 금월 실적, 향후 계획, 애로사항</li>
+            <li>관계기관 회의 안건 정리와 회의록 작성, 후속 조치마다 담당자와 기한 명시</li>
+          </ul>
+        </article>
+        <article class="pm-item">
+          <div class="pm-no">02</div>
+          <h3>KPI · 성과 관리</h3>
+          <div class="pm-story">
+            <div><dt>상황</dt><dd>1차년도에 불량 데이터가 없어 정확도(ACC)를 잴 수 없었고, 생산성 지표(불량 폐기 금액 감소)도 현장 불량이 거의 없어 측정이 불가능했습니다.</dd></div>
+            <div><dt>한 일</dt><dd>정확도 대신 쓸 지표(TNR)와 근거를 문서로 남겨 중간보고에 대응했습니다. 자주검사성적서 513건을 분석해 검사 공정 실태를 파악하고, 검증기관과 협의해 지표를 '검사시간 감소율'로 바꾼 뒤 시험항목 정의서를 제출했습니다.</dd></div>
+            <div><dt>결과</dt><dd>성과보고회 발표자료 작성 — AI 정확도 94.2%(목표 90%), 데이터 구축 20만 건(목표 7만 건).</dd></div>
+          </div>
+        </article>
+        <article class="pm-item">
+          <div class="pm-no">03</div>
+          <h3>데이터 확보 문제 해결</h3>
+          <div class="pm-story">
+            <div><dt>상황</dt><dd>불량 데이터가 3건뿐이고 결함 유형도 분류돼 있지 않았습니다.</dd></div>
+            <div><dt>한 일</dt><dd>핵심 이슈 5건을 정리해 관계자 회의를 주도했고, 수요기업에 내경 전수검사 한시 운영과 불량품 별도 제작을 요청했습니다.</dd></div>
+            <div><dt>결과</dt><dd>결함 유형이 분류된 불량 데이터 15건 확보. 작업지시 등 민감 정보를 비식별화한 데이터셋 문서도 작성해 제출했습니다.</dd></div>
+          </div>
+        </article>
+        <article class="pm-item">
+          <div class="pm-no">04</div>
+          <h3>조달 · 예산</h3>
+          <ul>
+            <li>나라장터로 2차 인프라(액츄에이터 · 조도측정기) 구매 — 사전규격 공개부터 입찰 완료까지 진행</li>
+            <li>합산 발주하면 국가연구시설장비 심의 대상(1억 원)이 되는 점을 확인하고, 품목을 나눠 등록하도록 조정</li>
+            <li>사업비 집행 내역 검증 — 주관기관 집행률 98.7%</li>
+          </ul>
+        </article>
+        <article class="pm-item">
+          <div class="pm-no">05</div>
+          <h3>대외 협의</h3>
+          <ul>
+            <li>수요기업 IT 계열사와 AI 데이터를 사내 DB에 적재하는 연계 방안 협의 → 연계 방식(DB 직접 적재), 기관별 담당과 일정 확정</li>
+            <li>엣지 서버 설치 전 IP 할당 · 망 분리 · 원격접속 경로를 고객사 IT팀과 사전 협의</li>
+            <li>관리기관 안내사항을 정리해 컨소시엄 참여기관에 공유</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- EXPERIENCE -->
   <section id="experience" class="alt">
     <div class="wrap">
       <div class="sec-head">
-        <div class="label"><span class="ln">03</span>Experience</div>
+        <div class="label"><span class="ln">05</span>Experience</div>
         <div><h2>경력</h2></div>
       </div>
       <div class="sec-body">
@@ -229,10 +383,11 @@
             <div class="when">2025.06 –<br><span class="now">재직 중</span></div>
             <div>
               <h3>㈜빅아이</h3>
-              <div class="role">플랫폼 개발 및 유지보수 · 정규직</div>
+              <div class="role">플랫폼 개발 · 국가 R&amp;D 과제 PM · 정규직</div>
               <ul>
                 <li>제조 현장 AI 솔루션: 백엔드·프론트, AI 모델 서빙, 추론 결과 가시화, 운영</li>
                 <li>설비 데이터 수집 파이프라인(Modbus TCP, MQTT)과 엣지 서비스 개발·현장 적용</li>
+                <li>공장 현장 네트워크 구성(듀얼 NIC · 망 분리)과 VPN · 방화벽 · 라우팅 장애 진단</li>
                 <li>국가 R&amp;D 과제 관리: 수요기업·참여 대학 일정 조율, 중간보고서, 예산 집행 검증, 협약 변경, 나라장터 장비 도입</li>
               </ul>
             </div>
@@ -276,7 +431,7 @@
   <section id="skills">
     <div class="wrap">
       <div class="sec-head">
-        <div class="label"><span class="ln">04</span>Skills</div>
+        <div class="label"><span class="ln">06</span>Skills</div>
         <div><h2>기술</h2><p>실무에서 쓰는 순서대로 적었습니다.</p></div>
       </div>
       <div class="sec-body">
@@ -296,7 +451,7 @@
   <section id="education" class="alt" style="padding:96px 0">
     <div class="wrap">
       <div class="sec-head">
-        <div class="label"><span class="ln">05</span>Education</div>
+        <div class="label"><span class="ln">07</span>Education</div>
         <div><h2>학력 · 자격</h2></div>
       </div>
       <div class="sec-body two-col">
@@ -324,7 +479,7 @@
   <section id="contact" class="contact">
     <div class="wrap">
       <div class="sec-head">
-        <div class="label"><span class="ln">06</span>Contact</div>
+        <div class="label"><span class="ln">08</span>Contact</div>
         <div>
           <h2>함께 일할 기회를 찾고 있습니다.</h2>
           <p>프로젝트의 설계 이유나 현장 이야기를 더 자세히 듣고 싶으시면 편하게 연락 주세요.</p>
