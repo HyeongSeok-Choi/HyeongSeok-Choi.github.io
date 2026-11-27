@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>실시간 품질 모니터링 · AI 품질 예측 시스템 — 최형석</title>
+<meta name="description" content="PLC 센서 데이터 수집부터 MQTT 전송, FastAPI 추론·스트리밍, CI/CD까지">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230d1b2e'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='16' fill='white' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><span class="brand-mark">H</span>최형석</a>
+    <nav class="nav">
+      <a href="../index.html#projects">프로젝트</a>
+      <a href="../index.html#experience">경력</a>
+      <a class="btn-sm" href="../index.html#contact">연락하기</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="cs-hero">
+    <div class="wrap">
+      <a class="back" href="../index.html#projects">← 프로젝트 목록</a>
+      <p class="eyebrow">Case Study 01</p>
+      <h1>제조 공정 실시간 품질 모니터링 · AI 품질 예측 시스템</h1>
+      <p class="lead">설비(PLC)의 센서 데이터를 엣지에서 0.3초 주기로 수집해 MQTT로 서버에 보내고, FastAPI 백엔드에서 실시간 스트리밍 · AI 추론 · 이력 조회 · 보고서까지 이어지는 파이프라인을 설계·구축해 현장에 납품하고 운영했습니다. 작업자가 설비 앞 화면으로 보는 시스템입니다.</p>
+      <dl class="facts">
+        <div><dt>기간</dt><dd>2026.01 – 진행 중</dd></div>
+        <div><dt>역할</dt><dd>수집·추론 파이프라인, DB, 배포</dd></div>
+        <div><dt>기여</dt><dd>비머지 커밋 210건 중 148건</dd></div>
+        <div><dt>형태</dt><dd>현장 납품 · 온프레미스</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="cs-layout">
+      <nav class="cs-nav">
+        <a href="#arch">구성</a>
+        <a href="#pipeline">수집 파이프라인</a>
+        <a href="#mqtt">엣지 MQTT 전환</a>
+        <a href="#domain">데이터 · 모델 연동</a>
+        <a href="#quality">테스트 · CI/CD</a>
+        <a href="#issues">문제 해결 사례</a>
+        <a href="#stack">기술 스택</a>
+      </nav>
+
+      <div class="cs-content">
+        <section id="arch">
+          <h2><span class="no">01</span>구성과 역할</h2>
+          <p class="intro">팀원 두 명이 초기 세팅, 로그인·JWT, 사용자 관리, 초기 대시보드를 맡았고, 저는 그 위에서 데이터가 들어오고 판정되어 화면에 나가는 경로 전체를 맡았습니다.</p>
+          <div class="mini-arch" style="margin:24px 0;background:var(--bg-alt);padding:24px;border:1px solid var(--line)">
+            <div class="row">
+              <div class="box"><b>설비 PLC</b><span>센서 22채널 · 레지스터 85개</span></div>
+              <div class="link">Modbus</div>
+              <div class="box dark"><b>엣지 PC</b><span>기존 CSV 수집기 + MQTT 발신기</span></div>
+              <div class="link">MQTT</div>
+              <div class="box dark"><b>추론 서버</b><span>mosquitto · FastAPI · nginx · MariaDB</span></div>
+            </div>
+            <div class="below">
+              <div>파싱 · 단위 환산</div><div>AI 모델 3종 추론</div><div>제품(사이클) 단위 저장</div><div>SSE → 작업자 화면</div>
+            </div>
+          </div>
+          <ul>
+            <li><b>본인 담당:</b> 수집 · 스트리밍 · 추론 파이프라인, DB 구조, 모델 연동, 엣지 MQTT, 테스트 · CI, 배포 자동화, 운영 화면 대부분</li>
+          </ul>
+        </section>
+
+        <section id="pipeline">
+          <h2><span class="no">02</span>수집 루프를 막지 않는 파이프라인</h2>
+          <p class="intro">수집 → 추론 → 화면 전 구간을 만들면서 가장 먼저 지킨 원칙은 "0.3초 수집 주기는 무엇에도 막히지 않는다"였습니다.</p>
+          <ul>
+            <li>PLC 레지스터 85개를 <b>1회 요청</b>으로 읽습니다.</li>
+            <li>블로킹 Modbus 클라이언트를 <b>Async 클라이언트로 교체</b>했습니다. 0.3초마다 이벤트 루프가 멈춰 API 전체가 서던 문제 때문입니다.</li>
+            <li>DB 쓰기와 모델 추론은 <code>asyncio.to_thread</code>로 분리해 수집 루프가 기다리지 않게 했습니다.</li>
+            <li>수집 주기(0.3초)와 화면 전송 주기(0.5초)를 분리했습니다.</li>
+            <li>SSE 구독자마다 크기가 정해진 큐를 두고, 차면 가장 오래된 프레임을 버립니다. 느린 브라우저가 수집을 막지 못합니다.</li>
+            <li>nginx에서 <code>proxy_buffering off</code>, 읽기 타임아웃 24시간. 버퍼링이 켜져 있으면 이벤트가 몰려서 나갑니다.</li>
+            <li>접속 기록 저장이 이벤트 루프를 세우던 것도 루프 밖으로 뺐습니다.</li>
+            <li>PLC가 없는 개발 PC에서도 실제와 같은 레지스터 배열로 같은 파싱 경로를 타는 <b>모의 모드</b>를 만들었습니다.</li>
+          </ul>
+          <div class="callout"><b>용량 판단</b> — 22태그를 3.3Hz로 그대로 적재하면 하루 600만 행입니다. 원본은 엣지 CSV가 주인이고, 서버 DB에는 추론 · 검사 결과(가공된 데이터)만 남겼습니다.</div>
+        </section>
+
+        <section id="mqtt">
+          <h2><span class="no">03</span>수집 경로 전환: 서버 직접 Modbus → 엣지 MQTT</h2>
+          <p class="intro">서버가 PLC를 직접 읽는 구성은 현장에서 안정적으로 붙지 않았고, 한 PLC에 마스터가 둘이 되는 문제도 있었습니다. 엣지가 이미 읽고 있는 프레임을 MQTT로 넘겨받도록 바꿨습니다.</p>
+          <ul>
+            <li>수집 루프는 <b>두 군데(연결 확인 · 프레임 읽기)만</b> 갈아 끼우고, 아래의 파싱 · 모델 · DB · SSE는 그대로 뒀습니다.</li>
+            <li>설정 한 줄(<code>MQTT_ENABLED=false</code>)로 예전 경로로 되돌릴 수 있습니다.</li>
+            <li>단위 환산(배율)은 서버 한 곳에서만 합니다. 양쪽이 배율을 따로 들면 한쪽만 고쳤을 때 값이 소리 없이 10배 어긋납니다.</li>
+          </ul>
+          <h3>새로 생기는 고장마다 대응을 넣었습니다</h3>
+          <table class="tbl">
+            <thead><tr><th>고장</th><th>대응</th></tr></thead>
+            <tbody>
+              <tr><td>QoS 1 재전송(중복)</td><td>순번(seq)으로 버림</td></tr>
+              <tr><td>엣지 재기동</td><td>seq가 크게 뒤로 뛰면 기준선을 다시 잡음</td></tr>
+              <tr><td>끊겼다 다시 붙음</td><td>지난 프레임을 몰아 받지 않음 (clean session, retain 미사용)</td></tr>
+              <tr><td>큐가 참</td><td>오래된 것부터 버림</td></tr>
+              <tr><td>엣지가 조용함</td><td>5초면 화면에 경고 배지</td></tr>
+              <tr><td>채널 누락</td><td>세어서 로그 · 상태 API · 화면에 표시</td></tr>
+            </tbody>
+          </table>
+          <h3>엣지 발신기</h3>
+          <ul>
+            <li>기존 수집기가 쓰는 CSV를 따라가며 발신합니다. <b>기존 수집기는 건드리지 않습니다.</b></li>
+            <li>날짜가 바뀌면 다음 파일로 옮겨 타고, 덜 쓰인 줄은 보내지 않습니다.</li>
+            <li>같은 설비 발신기의 중복 기동을 막는 잠금을 넣었습니다. 두 개가 뜨면 같은 client id로 브로커가 서로를 끊어 내는 일이 실제로 있었습니다.</li>
+          </ul>
+        </section>
+
+        <section id="domain">
+          <h2><span class="no">04</span>제품 단위 데이터 · AI 모델 연동</h2>
+          <h3>제품(가공 사이클) 단위 데이터 구조</h3>
+          <ul>
+            <li><code>products</code> 테이블을 만들고 센서 · 추론 결과를 FK로 묶었습니다.</li>
+            <li>제품 목록 · 상세 · 센서 시계열 · 추론 결과 · 보고서 API를 만들었습니다.</li>
+          </ul>
+          <h3>사이클 경계 재설계</h3>
+          <p>PLC 56번지를 사이클 경계로 쓰고 있었는데, 실제로는 투입자재 라벨이었습니다. 실측 로그와 대조해 보니 가공 26회에 라벨 변경은 15회였습니다. Z축 가공 상태로 경계를 바꾸고 가공이 끝나는 즉시 판정하게 했습니다.</p>
+          <div class="stat-strip">
+            <div><b>26 / 26</b><span>재생 검증: 가공 횟수와 열린 사이클 수 일치</span></div>
+            <div><b>15</b><span>기존 기준(라벨 변경)으로 잡히던 사이클 수</span></div>
+            <div><b>즉시</b><span>26건 모두 가공 종료 즉시 판정</span></div>
+          </div>
+          <h3>외부(대학) AI 모델 연동과 평가</h3>
+          <ul>
+            <li>이상탐지 · 회귀 · 불량 판정 모델 3종을 <b>어댑터 계층</b>으로 붙였습니다. 원본 코드는 고치지 않고 차이는 어댑터에서 맞춥니다.</li>
+            <li>"모델이 없음"과 "이 사이클은 판정 보류"를 구분해 화면에 보여 줍니다.</li>
+            <li>사이클 477건을 모델에 태워 성적서 실측과 대조하는 평가 스크립트를 만들었고, 조도 예측 일부 구간에서 <b>학습 데이터 누수 흔적</b>(예측의 42%가 실측을 소수 셋째 자리까지 재현)을 찾았습니다. 누수가 없는 구간에서는 평균값만 답하는 것보다 나쁘다는 것을 수치로 보였습니다.</li>
+            <li>생산성 검증 제출용으로 흩어진 테이블을 조인해 기간별 추론 로그 CSV와 일별 요약을 한 번에 냅니다(시연용 모의 사이클은 기본 제외).</li>
+            <li>불량 예측 알림이 화면 폴링에 의존해 다른 화면에 있으면 누락되던 것을, 판정 직후 서버가 <b>SSE 이벤트로 밀어 보내게</b> 바꿨습니다.</li>
+          </ul>
+        </section>
+
+        <section id="quality">
+          <h2><span class="no">05</span>테스트 · CI/CD</h2>
+          <div class="stat-strip">
+            <div><b>0 → 297</b><span>백엔드 테스트 함수 (2026.11 기준)</span></div>
+            <div><b>141 + 10</b><span>CI 최초 구축 시 백엔드 · 프론트 테스트</span></div>
+            <div><b>자동 롤백</b><span>배포 실패 시 직전 커밋으로</span></div>
+          </div>
+          <ul>
+            <li>통합 테스트는 실제 MySQL에 시험용 스키마를 만들어 돌립니다. 목 DB로는 FK · 마이그레이션이 검증되지 않기 때문입니다.</li>
+            <li>설비 쓰기 호출이 코드에 없는지 CI가 확인합니다(단방향 운영 안전 요건).</li>
+            <li>머지하면 자체 호스팅 러너가 배포합니다. 인바운드 방화벽을 열지 않고, 가공 중이면 끝날 때까지 기다리며, 실패하면 직전 커밋으로 되돌립니다.</li>
+          </ul>
+        </section>
+
+        <section id="issues">
+          <h2><span class="no">06</span>문제 해결 사례</h2>
+          <div class="case">
+            <div class="case-h"><span class="tag">CASE 1</span>배포가 가공 도중 재시작해 제품 하나가 두 사이클로 갈림</div>
+            <dl class="case-b"><dt>원인</dt><dd>배포 스크립트가 가공 대기를 맨 앞에서 한 번만 확인했고, 빌드하는 1분 사이에 가공이 시작됐습니다.</dd><dt>해결</dt><dd>재기동 직전에 한 번 더 확인합니다. 끊긴 사이클은 종료 시각을 지어 넣지 않고 '중단'으로 남깁니다.</dd></dl>
+          </div>
+          <div class="case">
+            <div class="case-h"><span class="tag">CASE 2</span>'배포 완료'인데 수집이 죽어 있을 수 있었음</div>
+            <dl class="case-b"><dt>원인</dt><dd>기동 확인이 MQTT가 붙기 전에 찍혀 늘 False였고, 진짜 실패와 구분되지 않았습니다.</dd><dt>해결</dt><dd>연결 여부에 더해 프레임 수가 늘고 있는지까지 봅니다. 같은 작업에서 모델 의존성이 배포에서 빠지던 것(배포는 성공하고 추론만 깨지는 고장)도 찾았습니다.</dd></dl>
+          </div>
+          <div class="case">
+            <div class="case-h"><span class="tag">CASE 3</span>사이클 경계 오판</div>
+            <dl class="case-b"><dt>원인</dt><dd>PLC 56번지를 사이클 경계로 알고 있었지만 실제로는 투입자재 라벨이었습니다.</dd><dt>해결</dt><dd>실측 로그로 번지 의미를 검증하고 Z축 가공 상태로 경계를 바꿨습니다.</dd></dl>
+          </div>
+          <div class="case">
+            <div class="case-h"><span class="tag">CASE 4</span>좋아 보이던 모델 지표</div>
+            <dl class="case-b"><dt>원인</dt><dd>일부 구간 예측이 학습 데이터를 그대로 재현하고 있었습니다.</dd><dt>결과</dt><dd>477건 실측 대조로 누수를 밝히고, 누수 없는 구간의 실제 성능을 수치로 보고했습니다.</dd></dl>
+          </div>
+          <div class="case">
+            <div class="case-h"><span class="tag">CASE 5</span>알림 누락 · 반쪽 사이클 판정</div>
+            <dl class="case-b"><dt>해결</dt><dd>폴링 기반 알림을 서버 푸시(SSE)로 바꿨고, 가공 도중 기동하면 첫 사이클을 반쪽 데이터로 판정하던 문제를 고쳤습니다.</dd></dl>
+          </div>
+        </section>
+
+        <section id="stack" style="padding-bottom:0">
+          <h2><span class="no">07</span>기술 스택</h2>
+          <div class="chips" style="margin-top:20px">
+            <span class="chip">Python</span><span class="chip">FastAPI (asyncio)</span><span class="chip">pymodbus</span><span class="chip">MQTT · mosquitto · paho-mqtt</span><span class="chip">SSE</span><span class="chip">MariaDB / MySQL (pymysql)</span><span class="chip">SvelteKit (정적 빌드)</span><span class="chip">nginx</span><span class="chip">Windows 서비스 (NSSM)</span><span class="chip">GitHub Actions · 자체 호스팅 러너</span><span class="chip">pytest</span>
+          </div>
+          <p style="font-size:13.5px;color:var(--faint)">고객사명 · IP · 설비명은 공개하지 않습니다. 수치는 저장소 커밋 기록과 직접 센 값입니다(2026.11.27 기준).</p>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="cs-next">
+      <a href="../index.html#projects"><small>목록</small>← 전체 프로젝트</a>
+      <a href="edge-alarm.html" style="text-align:right"><small>다음 프로젝트</small>AI 안전관제 엣지 알람 서비스 →</a>
+    </div>
+  </div>
+</main>
+<footer><div class="wrap"><span>© 2026 Choi HyeongSeok</span><span>Last updated 2026.11</span></div></footer>
+</body>
+</html>

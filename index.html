@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>최형석 · 제조 현장 데이터 · 웹 플랫폼 개발자</title>
+<meta name="description" content="설비 데이터 수집부터 API, 실시간 화면, 현장 운영까지 다루는 개발자 최형석의 포트폴리오">
+<meta property="og:title" content="최형석 · Portfolio">
+<meta property="og:description" content="설비에서 화면까지, 제조 현장의 데이터 흐름 전체를 만드는 개발자">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230d1b2e'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='16' fill='white' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="brand-mark">H</span>최형석</a>
+    <nav class="nav">
+      <a href="#about">소개</a>
+      <a href="#projects">프로젝트</a>
+      <a href="#experience">경력</a>
+      <a href="#skills">기술</a>
+      <a class="btn-sm" href="#contact">연락하기</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" style="padding-top:120px">
+    <div class="wrap">
+      <p class="eyebrow">Backend · Platform · Industrial Data</p>
+      <h1>설비에서 화면까지,<br><span class="thin">제조 현장의 데이터 흐름을 만드는</span> 개발자 최형석입니다.</h1>
+      <p class="lead">PLC·산업용 IO 모듈에서 데이터를 읽어 오는 수집기부터 API, 실시간 화면, 현장 배포와 운영까지 맡아 왔습니다. 현장에서 실제로 돌아가고, 장애가 나도 안전하게 멈추는 시스템을 만드는 데 관심이 많습니다.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#projects">대표 프로젝트 보기 <span class="arrow">→</span></a>
+        <a class="btn btn-ghost" href="https://github.com/HyeongSeok-Choi" target="_blank" rel="noopener">GitHub</a>
+      </div>
+
+      <div class="flow" aria-label="담당 영역">
+        <div class="flow-step"><div class="n">01</div><h3>설비</h3><p>PLC · ADAM 릴레이<br>Modbus TCP</p></div>
+        <div class="flow-step on"><div class="n">02</div><h3>엣지</h3><p>수집기 · 발신기<br>알람 서비스</p></div>
+        <div class="flow-step on"><div class="n">03</div><h3>전송</h3><p>MQTT · REST API<br>중복 · 재연결 처리</p></div>
+        <div class="flow-step on"><div class="n">04</div><h3>서버</h3><p>FastAPI · 추론 연동<br>MariaDB</p></div>
+        <div class="flow-step on"><div class="n">05</div><h3>화면 · 운영</h3><p>SSE 실시간 화면<br>CI/CD · 현장 배포</p></div>
+      </div>
+      <p class="flow-caption">어두운 칸이 직접 설계·구현한 구간입니다.</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="label">About</div>
+        <div>
+          <h2>데이터가 어디서 어떻게 들어오는지 알고<br>그 위에 화면과 기능을 만듭니다.</h2>
+          <p>교육 과정에서 Java·Spring Boot로 웹을 배웠고, 첫 회사에서는 C#·Unity로 AR 콘텐츠를, 지금은 Python·FastAPI로 제조 현장 AI 플랫폼을 만들고 있습니다. 언어는 문제를 푸는 도구라고 생각해 필요한 환경으로 옮겨 가는 데 부담이 없습니다.</p>
+        </div>
+      </div>
+      <div class="sec-body">
+        <div class="about-grid">
+          <div class="about-item"><h3>원인을 끝까지 찾습니다</h3><p>서버 GPU 메모리가 계속 차오르던 문제를 재시작으로 넘기지 않고, 추론 코드에 빠진 <code>torch.no_grad()</code>를 찾아 해결했습니다.</p></div>
+          <div class="about-item"><h3>현장에서 검증합니다</h3><p>PLC 번지의 의미, 릴레이 코일 주소, 통신 끊김의 원인을 실측 로그와 장비로 직접 확인한 뒤 코드에 반영합니다.</p></div>
+          <div class="about-item"><h3>장애를 전제로 설계합니다</h3><p>재연결, 중복 제거, watchdog 자동 OFF, 배포 롤백처럼 "잘못됐을 때 어떻게 되는가"를 먼저 정합니다.</p></div>
+          <div class="about-item"><h3>개발 밖의 일도 함께 합니다</h3><p>국가 R&amp;D 과제의 일정 조율, 중간보고서, 예산 집행 검증, 나라장터 장비 도입 절차까지 병행하고 있습니다.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <section class="alt" style="padding:80px 0">
+    <div class="wrap">
+      <div class="metrics">
+        <div class="metric"><div class="v">0.3<small>초</small></div><div class="k">PLC 레지스터 85개 1회 요청 수집 주기</div><div class="src">품질 모니터링 시스템</div></div>
+        <div class="metric"><div class="v">~2<small>ms</small></div><div class="k">API 요청 접수부터 릴레이 반영 확인까지</div><div class="src">엣지 알람 서비스 · 현장 로그</div></div>
+        <div class="metric"><div class="v">297<small>개</small></div><div class="k">백엔드 테스트 함수 (0건에서 시작)</div><div class="src">품질 모니터링 시스템</div></div>
+        <div class="metric"><div class="v">148<small>/210</small></div><div class="k">팀 저장소 비머지 커밋 중 본인 커밋</div><div class="src">품질 모니터링 시스템</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="label">Projects</div>
+        <div>
+          <h2>현장에 납품해 운영 중인 시스템</h2>
+          <p>㈜빅아이에서 설계부터 현장 적용까지 맡은 두 프로젝트입니다. 고객사명과 설비 정보는 공개하지 않습니다.</p>
+        </div>
+      </div>
+
+      <article class="feature">
+        <div class="media">
+          <div class="mini-arch">
+            <div class="row">
+              <div class="box"><b>설비 PLC</b><span>센서 22채널<br>레지스터 85개</span></div>
+              <div class="link">Modbus</div>
+              <div class="box dark"><b>엣지 PC</b><span>CSV 수집기<br>MQTT 발신기</span></div>
+              <div class="link">MQTT</div>
+              <div class="box dark"><b>추론 서버</b><span>FastAPI · MariaDB<br>nginx · mosquitto</span></div>
+            </div>
+            <div class="below">
+              <div>SSE 실시간 화면</div><div>AI 모델 3종</div><div>제품 단위 이력</div><div>CI · 자동 배포</div>
+            </div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="tagline"><span>2026.01 – 진행 중</span><span>백엔드 · 파이프라인 · 운영</span></div>
+          <h3>제조 공정 실시간 품질 모니터링 · AI 품질 예측 시스템</h3>
+          <p class="sum">유압실린더 가공 설비의 센서 데이터를 엣지에서 0.3초 주기로 수집해 MQTT로 보내고, FastAPI 백엔드에서 실시간 스트리밍 · AI 추론 · 이력 조회 · 보고서까지 잇는 파이프라인을 만들었습니다.</p>
+          <ul class="points">
+            <li>블로킹 Modbus를 Async로 바꾸고 DB·추론을 스레드로 분리해 수집 주기 유지</li>
+            <li>서버 직접 수집 → 엣지 MQTT 전환, 중복·재기동·누락을 각각 처리</li>
+            <li>PLC 번지를 실측 로그로 검증해 사이클 경계 재설계 (26회 가공 = 26사이클)</li>
+            <li>테스트 0건 → 297개, 자체 호스팅 러너 무중단 배포 · 실패 시 롤백</li>
+          </ul>
+          <div class="chips"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">asyncio</span><span class="chip">MQTT</span><span class="chip">pymodbus</span><span class="chip">SSE</span><span class="chip">MariaDB</span><span class="chip">SvelteKit</span><span class="chip">GitHub Actions</span></div>
+          <a class="more" href="projects/quality-monitoring.html">자세히 보기 <span class="arrow">→</span></a>
+        </div>
+      </article>
+
+      <article class="feature">
+        <div class="media"><img src="assets/img/00_architecture.png" alt="엣지 알람 서비스 시스템 구조도"></div>
+        <div class="body">
+          <div class="tagline"><span>2026</span><span>설계 · 개발 · 현장 적용</span></div>
+          <h3>AI 안전관제 엣지 알람 서비스</h3>
+          <p class="sum">AI 추론 서버가 불량·위험을 감지하면 현장 경광등(ADAM-6260 릴레이)을 켜는 엣지 서비스입니다. 보안상 오프라인인 Windows 엣지 PC에 파일 복사만으로 배포합니다.</p>
+          <ul class="points">
+            <li>장비별 전담 워커 · 쓰기 후 재확인(read-back) · 자동 재연결</li>
+            <li>ON 갱신이 끊기면 30초 뒤 자동 OFF하는 watchdog</li>
+            <li>간헐적 0.4~1.2초 ON 지연의 원인을 찾아 ON 우선 규칙으로 해소</li>
+            <li>ADAM 2대 · 경광등 10채널 현장 적용, 시뮬레이터 통합 테스트 96개</li>
+          </ul>
+          <div class="chips"><span class="chip">Python</span><span class="chip">Modbus TCP</span><span class="chip">REST API</span><span class="chip">threading</span><span class="chip">Docker Compose</span><span class="chip">PowerShell</span></div>
+          <a class="more" href="projects/edge-alarm.html">자세히 보기 <span class="arrow">→</span></a>
+        </div>
+      </article>
+
+      <h3 style="font-size:20px;letter-spacing:-.02em;margin:88px 0 20px">그 밖의 프로젝트</h3>
+      <div class="cards">
+        <div class="card">
+          <div class="period">2025.06 – 2025.10 · ㈜빅아이</div>
+          <h4>시계열 기반 수요전력 예측 시스템</h4>
+          <p>전처리·파생 변수, XGBoost 모델 학습·평가, FastAPI 추론 서버, SvelteKit 시각화까지 단독 수행.</p>
+          <div class="chips"><span class="chip">XGBoost</span><span class="chip">pandas</span><span class="chip">FastAPI</span><span class="chip">SvelteKit</span></div>
+          <span class="lnk none">사내 프로젝트</span>
+        </div>
+        <div class="card">
+          <div class="period">2025.03 – 2026.01 · 사이드 프로젝트</div>
+          <h4>독서 모임 커뮤니티 BookTalk</h4>
+          <p>로그인 · 회원가입 · 마이페이지 · 관리자 화면 프론트와 일반·소셜 로그인 인증/인가 백엔드 담당.</p>
+          <div class="chips"><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Spring Boot</span><span class="chip">MySQL</span></div>
+          <a class="lnk" href="https://github.com/BookTalk-PROJECT/BookTalk_FE" target="_blank" rel="noopener">GitHub <span class="arrow">→</span></a>
+        </div>
+        <div class="card">
+          <div class="period">2024.11 – 2025.03 · ㈜메타뷰</div>
+          <h4>MR 원격 협업 · 자산관리 서비스 플랫폼 이전</h4>
+          <p>HoloLens2 원격 협업 프로그램과 안드로이드 AR 자산관리 시스템을 Metalens2로 컨버팅. SDK 교체로 깨진 기능 복원.</p>
+          <div class="chips"><span class="chip">C#</span><span class="chip">Unity</span><span class="chip">MySQL</span><span class="chip">MongoDB</span></div>
+          <span class="lnk none">사내 프로젝트</span>
+        </div>
+        <div class="card">
+          <div class="period">2024.07 – 2024.10 · 기업 연계</div>
+          <h4>AR 저작도구 Metavu Maker 템플릿 기능</h4>
+          <p>템플릿 데이터 정의, Scene UI, 추가·수정 클라이언트 로직과 서버 API를 구현하고 현업 피드백으로 최적화.</p>
+          <div class="chips"><span class="chip">C#</span><span class="chip">Unity</span><span class="chip">MongoDB</span><span class="chip">GitLab</span></div>
+          <span class="lnk none">기업 연계 프로젝트</span>
+        </div>
+        <div class="card">
+          <div class="period">2024.06 – 2024.07 · 팀장</div>
+          <h4>미니 MES 양약고구 <span class="badge">과정 내 2위</span></h4>
+          <p>수주 확정 시 생산 계획 자동 생성, 작업지시서 연동, 최대 생산량 기준 계획 분할, Chart.js 생산 현황.</p>
+          <div class="chips"><span class="chip">Spring Boot</span><span class="chip">JPA</span><span class="chip">jQuery</span><span class="chip">MySQL</span></div>
+          <a class="lnk" href="https://github.com/HyeongSeok-Choi/yangyaggogu/tree/hyeongseok" target="_blank" rel="noopener">GitHub <span class="arrow">→</span></a>
+        </div>
+        <div class="card">
+          <div class="period">2024.05 · 팀장</div>
+          <h4>포켓몬스터 팬카페 게시판</h4>
+          <p>Entity·Repository 설계, 카카오 OAuth2 로그인, 댓글 CRUD, 검색·정렬·페이징 구현.</p>
+          <div class="chips"><span class="chip">Spring Boot</span><span class="chip">JPA</span><span class="chip">Thymeleaf</span><span class="chip">OAuth2</span></div>
+          <a class="lnk" href="https://github.com/HyeongSeok-Choi/Poketmon-Board" target="_blank" rel="noopener">GitHub <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="label">Experience</div>
+        <div><h2>경력</h2></div>
+      </div>
+      <div class="sec-body">
+        <div class="timeline">
+          <div class="t-item">
+            <div class="when">2025.06 –<br><span class="now">재직 중</span></div>
+            <div>
+              <h3>㈜빅아이</h3>
+              <div class="role">플랫폼 개발 및 유지보수 · 정규직</div>
+              <ul>
+                <li>제조 현장 AI 솔루션: 백엔드·프론트, AI 모델 서빙, 추론 결과 가시화, 운영</li>
+                <li>설비 데이터 수집 파이프라인(Modbus TCP, MQTT)과 엣지 서비스 개발·현장 적용</li>
+                <li>국가 R&amp;D 과제 관리: 수요기업·참여 대학 일정 조율, 중간보고서, 예산 집행 검증, 협약 변경, 나라장터 장비 도입</li>
+              </ul>
+            </div>
+          </div>
+          <div class="t-item">
+            <div class="when">2024.11 –<br>2025.05</div>
+            <div>
+              <h3>㈜메타뷰</h3>
+              <div class="role">AR 콘텐츠 제작 및 유지보수 · 정규직</div>
+              <ul>
+                <li>Unity 기반 MR 원격 협업·자산관리 프로그램 플랫폼 이전(HoloLens2 → Metalens2)</li>
+                <li>AR 저작도구 유지보수·기능 추가, RDBMS·NoSQL 기반 서버 일부 구축</li>
+              </ul>
+            </div>
+          </div>
+          <div class="t-item">
+            <div class="when">2023.12 –<br>2024.10</div>
+            <div>
+              <h3>코드하우스 코딩아카데미</h3>
+              <div class="role">SW 개발 코딩교육 과정 (11개월)</div>
+              <ul>
+                <li>Java · Spring · Spring Boot · MySQL 풀스택 과정, 팀 프로젝트 4회 중 3회 팀장</li>
+                <li>기업 연계 프로젝트(Metavu Maker) 수행</li>
+              </ul>
+            </div>
+          </div>
+          <div class="t-item">
+            <div class="when">2022.05 –<br>2023.03</div>
+            <div>
+              <h3>(재)한국건설생활환경시험연구원</h3>
+              <div class="role">연구원 · 계약직</div>
+              <ul><li>시험 연구 보조, 실험실 관리</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="label">Skills</div>
+        <div><h2>기술</h2><p>실무에서 쓰는 순서대로 적었습니다.</p></div>
+      </div>
+      <div class="sec-body">
+        <div class="skills">
+          <div class="skill-row"><h4>Backend</h4><p>Python, FastAPI(asyncio), http.server<em>Java, Spring Boot, JPA</em></p></div>
+          <div class="skill-row"><h4>Industrial / IoT</h4><p>Modbus TCP(pymodbus), MQTT(mosquitto, paho-mqtt)<em>PLC · ADAM-6260 연동, 엣지 PC 운영</em></p></div>
+          <div class="skill-row"><h4>Frontend</h4><p>SvelteKit, React + Vite, TypeScript<em>SSE 실시간 화면, Chart.js</em></p></div>
+          <div class="skill-row"><h4>Data / AI</h4><p>MariaDB · MySQL, pandas, XGBoost<em>외부 모델 어댑터 연동, 정확도 평가</em></p></div>
+          <div class="skill-row"><h4>DevOps</h4><p>GitHub Actions(자체 호스팅 러너), pytest, nginx<em>Windows 서비스(NSSM · 작업 스케줄러), Docker Compose 구성</em></p></div>
+          <div class="skill-row"><h4>Etc.</h4><p>C#, Unity(AR/MR), PowerShell<em>Git · GitHub · GitLab</em></p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="alt" style="padding:96px 0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="label">Education</div>
+        <div><h2>학력 · 자격</h2></div>
+      </div>
+      <div class="sec-body two-col">
+        <div>
+          <h3>학력 · 교육</h3>
+          <table class="simple-table">
+            <tr><td>2023.12 – 2024.10</td><td>코드하우스 코딩아카데미<span class="sub">SW 개발 코딩교육 과정</span></td></tr>
+            <tr><td>2015.03 – 2021.02</td><td>대구가톨릭대학교<span class="sub">사회복지학 전공 · 심리학 복수전공 졸업</span></td></tr>
+          </table>
+        </div>
+        <div>
+          <h3>자격 · 어학</h3>
+          <table class="simple-table">
+            <tr><td>2020.04</td><td>컴퓨터활용능력 1급<span class="sub">대한상공회의소</span></td></tr>
+            <tr><td>2023.05</td><td>OPIc IM1<span class="sub">ACTFL</span></td></tr>
+            <tr><td>2019.09</td><td>운전면허 1종 보통</td></tr>
+            <tr><td>2016 – 2017</td><td>해병대 병장 만기 전역</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="label">Contact</div>
+        <div>
+          <h2>함께 일할 기회를 찾고 있습니다.</h2>
+          <p>프로젝트의 설계 이유나 현장 이야기를 더 자세히 듣고 싶으시면 편하게 연락 주세요.</p>
+        </div>
+      </div>
+      <div class="sec-body">
+        <div class="contact-list">
+          <a href="mailto:qnftlstm@naver.com"><div class="k">Email</div><div class="v">qnftlstm@naver.com</div></a>
+          <a href="https://github.com/HyeongSeok-Choi" target="_blank" rel="noopener"><div class="k">GitHub</div><div class="v">HyeongSeok-Choi</div></a>
+          <a href="https://hspp.notion.site/8234bd244943434abb16a3100ae5bedd" target="_blank" rel="noopener"><div class="k">Notion</div><div class="v">이력서 페이지</div></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Choi HyeongSeok</span><span>Last updated 2026.11</span></div></footer>
+</body>
+</html>
