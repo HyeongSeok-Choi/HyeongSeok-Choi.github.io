@@ -47,11 +47,11 @@
           <dl>
             <div><dt>현재</dt><dd>㈜빅아이 플랫폼 개발<small>2025.06 – 재직 중</small></dd></div>
             <div><dt>개발 경력</dt><dd>2년+<small>AR/MR 7개월 · 제조 AI 1년 6개월</small></dd></div>
-            <div><dt>주력</dt><dd>Python · FastAPI · SvelteKit</dd></div>
+            <div><dt>주력</dt><dd>Python · FastAPI · SvelteKit<small>LLM(Gemini) · RAG 연동</small></dd></div>
             <div><dt>강점</dt><dd>설비 데이터 수집 · 실시간 파이프라인</dd></div>
             <div><dt>현장</dt><dd>공장 망 구성 · 장애 진단<small>국가 R&amp;D 과제 PM 겸임</small></dd></div>
           </dl>
-          <a class="glance-link" href="#projects">대표 프로젝트 2건 <span class="arrow">→</span></a>
+          <a class="glance-link" href="#projects">대표 프로젝트 3건 <span class="arrow">→</span></a>
         </aside>
       </div>
 
@@ -105,8 +105,8 @@
       <div class="sec-head">
         <div class="label"><span class="ln">02</span>Projects</div>
         <div>
-          <h2>현장에 납품해 운영 중인 시스템</h2>
-          <p>㈜빅아이에서 설계부터 현장 적용까지 맡은 두 프로젝트입니다. 고객사명과 설비 정보는 공개하지 않습니다.</p>
+          <h2>제조 현장의 데이터를 다루는 대표 프로젝트</h2>
+          <p>설비 데이터 수집부터 현장 알람, AI 검사 피드백까지. 고객사명과 설비 정보는 공개하지 않습니다.</p>
         </div>
       </div>
 
@@ -168,6 +168,43 @@
           <a class="more" href="projects/edge-alarm.html">자세히 보기 <span class="arrow">→</span></a>
         </div>
       </article>
+
+      <article class="feature">
+        <div class="media">
+          <div class="mini-arch">
+            <div class="row">
+              <div class="box"><b>용접부 사진</b><span>업로드 1장</span></div>
+              <div class="link">POST</div>
+              <div class="box dark"><b>FastAPI</b><span>측정 → 판정<br>→ 피드백</span></div>
+              <div class="link">SSE</div>
+              <div class="box"><b>검사 화면</b><span>단계별 진행<br>도판 · 원인 · 조치</span></div>
+            </div>
+            <div class="below">
+              <div>CV 측정 API</div><div>사진 판정 모델</div><div>표 조회형 RAG</div><div>Gemini 피드백</div>
+            </div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="proj-no">PROJECT 03</div>
+          <div class="tagline"><span>2026.10</span><span>팀 프로젝트 · 백엔드 단독</span></div>
+          <h3>ERW 강관 용접부 AI 검사 · 현장 피드백 서비스</h3>
+          <p class="sum">용접부 단면 사진 한 장으로 CV 측정, 합격/불합격 판정, 원인 · 조치 피드백까지 만들어 주는 서비스입니다. LLM이 설비 조작 지시를 지어내지 못하도록 검색과 생성을 나눠 설계했습니다.</p>
+          <div class="kpis">
+            <div><b>3단계</b><span>측정·판정·피드백</span></div>
+            <div><b>55개</b><span>조치 어휘 enum</span></div>
+            <div><b>251건</b><span>유사 사례 검색</span></div>
+          </div>
+          <ul class="points">
+            <li>단계별 결과를 SSE로 흘려보내 20초 넘는 처리 중에도 진행 상황 표시</li>
+            <li>측정값을 검사기준 표와 대조하는 표 조회형 RAG — 결과가 결정적이고 근거 제시 가능</li>
+            <li>조치를 enum으로 고정하고 LLM은 문장만 작성, 매뉴얼에 없는 조치는 응답에 못 들어옴</li>
+            <li>외부 API · 모델 · LLM이 실패해도 대체 경로로 항상 응답</li>
+          </ul>
+          <div class="chips"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">SSE</span><span class="chip">Gemini</span><span class="chip">RAG</span><span class="chip">scikit-learn</span><span class="chip">PyTorch</span><span class="chip">OpenCV</span></div>
+          <a class="more" href="projects/weld-inspection.html">자세히 보기 <span class="arrow">→</span></a>
+        </div>
+      </article>
+
 
       <div class="sub-block" id="pm">
         <div class="sub-block-h">
